@@ -1,0 +1,57 @@
+﻿entity,period,period_type,period_end,balance_sheet_date,segment,parent_segment,is_subsegment,segment_revenue_cr,segment_pbt_cr,segment_assets_cr,segment_liabilities_cr,net_funding_position_cr,pbt_margin_pct,annualized_pbt_to_segment_assets_pct,liabilities_to_assets_x,share_of_entity_pbt_pct,share_of_entity_revenue_pct,share_of_entity_assets_pct,share_of_entity_liabilities_pct,source_file,source_page,segment_revenue_yoy_pct,segment_revenue_qoq_pct,segment_pbt_yoy_pct,segment_pbt_qoq_pct
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Treasury,,FALSE,8487.17,1663.85,626906.76,332810.15,-294096.61,19.6,1.06,0.53,17.63,13.72,32.62,19.46,Axis Bank Data file 1.pdf,5,0.8,20.97,-31.34,448.55
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Corporate/Wholesale Banking,,FALSE,14167.5,3358.26,598488.96,237696.61,-360792.35,23.7,2.24,0.4,35.59,22.91,31.14,13.9,Axis Bank Data file 1.pdf,5,20,9.71,22.69,56.94
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Retail Banking,,FALSE,38269.3,3565.52,686713.79,1131328.33,444614.54,9.32,2.08,1.65,37.78,61.88,35.73,66.15,Axis Bank Data file 1.pdf,5,7.4,3.81,148.32,44.17
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Digital Banking,Retail Banking,TRUE,10627.32,1531.43,153578.3,230504.61,76926.31,14.41,3.99,1.5,16.23,17.19,7.99,13.48,Axis Bank Data file 1.pdf,5,12.99,3.15,165.67,14.25
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Other Retail Banking,Retail Banking,TRUE,27641.98,2034.09,533135.49,900823.72,367688.23,7.36,1.53,1.69,21.56,44.7,27.74,52.67,Axis Bank Data file 1.pdf,5,5.4,4.06,136.68,79.57
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Other Banking Business,,FALSE,915.57,848.93,1064.84,37.07,-1027.77,92.72,,0.03,9,1.48,0.06,0,Axis Bank Data file 1.pdf,5,-11.64,-42.61,-10.62,-45.77
+Standalone,Q1FY27,Quarter,30-06-2026,30-06-2026,Unallocated,,FALSE,0,0,8791.82,8400.62,-391.2,,,0.96,0,0,0.46,0.49,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Treasury,,FALSE,7015.71,303.32,619567.76,342691.86,-276875.9,4.32,0.2,0.55,4.67,12.01,32.84,20.37,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Corporate/Wholesale Banking,,FALSE,12913.54,2139.85,571029.14,254472.26,-316556.88,16.57,1.5,0.45,32.97,22.11,30.26,15.12,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Retail Banking,,FALSE,36865.29,2473.14,686599.21,1077946.76,391347.55,6.71,1.44,1.57,38.1,63.13,36.39,64.06,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Digital Banking,Retail Banking,TRUE,10302.66,1340.41,148123.32,219472.46,71349.14,13.01,3.62,1.48,20.65,17.64,7.85,13.04,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Other Retail Banking,Retail Banking,TRUE,26562.63,1132.73,538475.89,858474.3,319998.41,4.26,0.84,1.59,17.45,45.48,28.54,51.02,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Other Banking Business,,FALSE,1595.43,1565.29,1084.1,48.5,-1035.6,98.11,,0.04,24.11,2.73,0.06,0,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q4FY26,Quarter,31-03-2026,31-03-2026,Unallocated,,FALSE,9.61,9.61,8569.67,7496.24,-1073.43,,,0.87,0.15,0.02,0.45,0.45,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Treasury,,FALSE,8419.72,2423.32,510734.13,264326.67,-246407.46,28.78,1.9,0.52,32.02,14.79,31.86,18.63,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Corporate/Wholesale Banking,,FALSE,11806.71,2737.21,447232.12,219843.64,-227388.48,23.18,2.45,0.49,36.17,20.74,27.89,15.5,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Retail Banking,,FALSE,35631.6,1435.87,637810.14,925882.23,288072.09,4.03,0.9,1.45,18.97,62.6,39.78,65.27,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Digital Banking,Retail Banking,TRUE,9405.36,576.45,131588.55,189640.63,58052.08,6.13,1.75,1.44,7.62,16.53,8.21,13.37,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Other Retail Banking,Retail Banking,TRUE,26226.24,859.42,506221.59,736241.6,230020.01,3.28,0.68,1.45,11.36,46.08,31.57,51.9,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Other Banking Business,,FALSE,1036.21,949.84,761.58,64.1,-697.48,91.66,,0.08,12.55,1.82,0.05,0,Axis Bank Data file 1.pdf,5,,,,
+Standalone,Q1FY26,Quarter,30-06-2025,30-06-2025,Unallocated,,FALSE,21.26,21.26,6769.71,8395.64,1625.93,,,1.24,0.28,0.04,0.42,0.59,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Treasury,,FALSE,30409.97,5036.68,619567.76,342691.86,-276875.9,16.56,0.81,0.55,17.04,13.23,32.84,20.37,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Corporate/Wholesale Banking,,FALSE,49329.2,11205.92,571029.14,254472.26,-316556.88,22.72,1.96,0.45,37.92,21.47,30.26,15.12,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Retail Banking,,FALSE,145093.82,8607.32,686599.21,1077946.76,391347.55,5.93,1.25,1.57,29.12,63.14,36.39,64.06,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Digital Banking,Retail Banking,TRUE,39655.73,4255.03,148123.32,219472.46,71349.14,10.73,2.87,1.48,14.4,17.26,7.85,13.04,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Other Retail Banking,Retail Banking,TRUE,105438.09,4352.29,538475.89,858474.3,319998.41,4.13,0.81,1.59,14.73,45.88,28.54,51.02,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Other Banking Business,,FALSE,4908.03,4640.49,1084.1,48.5,-1035.6,94.55,,0.04,15.7,2.14,0.06,0,Axis Bank Data file 1.pdf,5,,,,
+Standalone,FY26,Year,31-03-2026,31-03-2026,Unallocated,,FALSE,63.57,63.57,8569.67,7496.24,-1073.43,,,0.87,0.22,0.03,0.45,0.45,Axis Bank Data file 1.pdf,5,,,,
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Treasury,,FALSE,9291.74,1690.16,622794.23,374055.94,-248738.29,18.19,1.09,0.6,16.63,14.27,31.36,21.2,Axis Bank Data file 1.pdf,9,1.96,19.72,-30.46,436.22
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Corporate/Wholesale Banking,,FALSE,15026.97,3601.14,624360.42,240436.67,-383923.75,23.96,2.31,0.39,35.44,23.09,31.44,13.63,Axis Bank Data file 1.pdf,9,20.02,9.54,21.71,53.03
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Retail Banking,,FALSE,39517.11,3851.4,725645.64,1140341.33,414695.69,9.75,2.12,1.57,37.9,60.71,36.54,64.63,Axis Bank Data file 1.pdf,9,7.92,3.78,133.73,36.75
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Digital Banking,Retail Banking,TRUE,10627.32,1531.43,153578.3,230504.61,76926.31,14.41,3.99,1.5,15.07,16.33,7.73,13.06,Axis Bank Data file 1.pdf,9,12.99,3.15,165.67,14.25
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Other Retail Banking,Retail Banking,TRUE,28889.79,2319.97,572067.34,909836.72,337769.38,8.03,1.62,1.59,22.83,44.38,28.81,51.57,Axis Bank Data file 1.pdf,9,6.16,4.02,116.54,57.17
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Other Banking Business,,FALSE,1256.85,1018.58,4213.53,190.65,-4022.88,81.04,,0.05,10.02,1.93,0.21,0.01,Axis Bank Data file 1.pdf,9,-8.12,-35.08,-9.16,-41.89
+Consolidated,Q1FY27,Quarter,30-06-2026,30-06-2026,Unallocated,,FALSE,0,0,8981.73,9367.96,386.23,,,1.04,0,0,0.45,0.53,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Treasury,,FALSE,7761.53,315.2,616649.52,382781.74,-233867.78,4.06,0.2,0.62,4.35,12.62,31.69,22.09,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Corporate/Wholesale Banking,,FALSE,13718.13,2353.18,594824.55,256187.38,-338637.17,17.15,1.58,0.43,32.47,22.31,30.57,14.79,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Retail Banking,,FALSE,38077.25,2816.46,721709.71,1084866.36,363156.65,7.4,1.56,1.5,38.86,61.91,37.09,62.62,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Digital Banking,Retail Banking,TRUE,10302.66,1340.41,148123.32,219472.46,71349.14,13.01,3.62,1.48,18.5,16.75,7.61,12.67,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Other Retail Banking,Retail Banking,TRUE,27774.59,1476.05,573586.39,865393.9,291807.51,5.31,1.03,1.51,20.37,45.16,29.47,49.95,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Other Banking Business,,FALSE,1935.95,1752.74,4113.02,223.21,-3889.81,90.54,,0.05,24.19,3.15,0.21,0.01,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q4FY26,Quarter,31-03-2026,31-03-2026,Unallocated,,FALSE,9.61,9.61,8753.49,8412.68,-340.81,,,0.96,0.13,0.02,0.45,0.49,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Treasury,,FALSE,9113.55,2430.58,508072.12,299207.91,-208864.21,26.67,1.91,0.59,29.71,15.28,30.73,20.48,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Corporate/Wholesale Banking,,FALSE,12520.78,2958.75,468434.17,220579.4,-247854.77,23.63,2.53,0.47,36.17,20.99,28.33,15.1,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Retail Banking,,FALSE,36618.39,1647.83,666739.71,931663.09,264923.38,4.5,0.99,1.4,20.15,61.4,40.32,63.78,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Digital Banking,Retail Banking,TRUE,9405.36,576.45,131588.55,189640.63,58052.08,6.13,1.75,1.44,7.05,15.77,7.96,12.98,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Other Retail Banking,Retail Banking,TRUE,27213.03,1071.38,535151.16,742022.46,206871.3,3.94,0.8,1.39,13.1,45.63,32.36,50.79,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Other Banking Business,,FALSE,1367.89,1121.28,3310.55,213.23,-3097.32,81.97,,0.06,13.71,2.29,0.2,0.01,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,Q1FY26,Quarter,30-06-2025,30-06-2025,Unallocated,,FALSE,21.26,21.26,6933.13,9162.61,2229.48,,,1.32,0.26,0.04,0.42,0.63,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Treasury,,FALSE,33271.81,5064.54,616649.52,382781.74,-233867.78,15.22,0.82,0.62,15.68,13.77,31.69,22.09,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Corporate/Wholesale Banking,,FALSE,52500.54,12175.71,594824.55,256187.38,-338637.17,23.19,2.05,0.43,37.7,21.73,30.57,14.79,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Retail Banking,,FALSE,149401.52,9578.58,721709.71,1084866.36,363156.65,6.41,1.33,1.5,29.66,61.85,37.09,62.62,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Digital Banking,Retail Banking,TRUE,39655.73,4255.03,148123.32,219472.46,71349.14,10.73,2.87,1.48,13.18,16.42,7.61,12.67,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Other Retail Banking,Retail Banking,TRUE,109745.79,5323.55,573586.39,865393.9,291807.51,4.85,0.93,1.51,16.48,45.43,29.47,49.95,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Other Banking Business,,FALSE,6332.84,5411.07,4113.02,223.21,-3889.81,85.44,,0.05,16.76,2.62,0.21,0.01,Axis Bank Data file 1.pdf,9,,,,
+Consolidated,FY26,Year,31-03-2026,31-03-2026,Unallocated,,FALSE,63.57,63.57,8753.49,8412.68,-340.81,,,0.96,0.2,0.03,0.45,0.49,Axis Bank Data file 1.pdf,9,,,,
