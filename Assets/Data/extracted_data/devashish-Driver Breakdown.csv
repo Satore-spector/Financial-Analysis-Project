@@ -1,0 +1,39 @@
+﻿level,section,driver,Q1FY26,Q1FY27,impact_on_pbt_cr,method,source,note
+Bank,1. PBT bridge,Start: PBT Q1FY26,,,7567.5,Reported,Axis Bank Data file 1.pdf p1,
+Bank,1. PBT bridge,Net interest income,13559.75,14646.1,1086.35,Change,Axis Bank Data file 1.pdf p1,
+Bank,1. PBT bridge,Fee income,5746,6156,410,Change,Axis Bank Press release for additional metrics.pdf p7,
+Bank,1. PBT bridge,Trading income,1420,537,-883,Change,Axis Bank Press release for additional metrics.pdf p7,Q1FY26 had large bond gains
+Bank,1. PBT bridge,Miscellaneous income,92,42,-50,Change,Axis Bank Press release for additional metrics.pdf p7,
+Bank,1. PBT bridge,Operating expenses,9302.65,9722.42,-419.77,Change (cost rise reduces PBT),Axis Bank Data file 1.pdf p1,
+Bank,1. PBT bridge,Provisions,3947.66,2222.54,1725.12,Change (lower provisions raise PBT),Axis Bank Data file 1.pdf p1,
+Bank,1. PBT bridge,End: PBT Q1FY27,,,9436.56,Reported,Axis Bank Data file 1.pdf p1,Other income lines from press release are rounded; bridge closes within INR 1 crore
+Bank,2. NII volume vs rate,Interest on advances: volume effect (loan growth),24408.1,26515.74,4648.72,Q1FY26 interest x loan growth,Axis Bank Data file 1.pdf p1,Approx: period-end balances
+Bank,2. NII volume vs rate,Interest on advances: rate effect (lower yields),,,-2541.08,Residual,Axis Bank Data file 1.pdf p1,Repo cuts of 125 bps passed through to loans
+Bank,2. NII volume vs rate,Interest expended: volume effect (more deposits/borrowings),17503.76,19339.53,-3489.67,Q1FY26 interest x funding growth,Axis Bank Data file 1.pdf p1,Approx: period-end balances
+Bank,2. NII volume vs rate,Interest expended: rate effect (lower cost of funds),,,1653.9,Residual,Axis Bank Data file 1.pdf p1,
+Bank,2. NII volume vs rate,"Other interest income (investments, RBI balances)",6655.41,7469.89,814.48,Change,Axis Bank Data file 1.pdf p1,
+Bank,"3. NIM bridge (management, bps)",NIM YoY change (total),,-34,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,3.80% to 3.46%
+Bank,"3. NIM bridge (management, bps)",  due to repo rate cuts net of deposit repricing,,-19,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,
+Bank,"3. NIM bridge (management, bps)",  due to balance sheet mix,,-16,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,"more corporate, less retail lending"
+Bank,"3. NIM bridge (management, bps)",NIM QoQ change (total),,-16,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,
+Bank,"3. NIM bridge (management, bps)",  due to agri slippage interest reversal (seasonal),,-3,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,
+Bank,"3. NIM bridge (management, bps)",  due to balance sheet mix,,-4,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,
+Bank,"3. NIM bridge (management, bps)",  due to loan pricing,,-9,,Reported by CFO,Axis Bank earnings call Conference Data.pdf p6,
+Segment,4. Segment bridge,Retail Banking: revenue change,35631.6,38269.3,2637.7,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Retail Banking: implied cost change (revenue - PBT),34195.73,34703.78,-508.05,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Retail Banking: PBT change,1435.87,3565.52,2129.65,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Digital Banking: revenue change,9405.36,10627.32,1221.96,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Digital Banking: implied cost change (revenue - PBT),8828.91,9095.89,-266.98,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Digital Banking: PBT change,576.45,1531.43,954.98,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Other Retail Banking: revenue change,26226.24,27641.98,1415.74,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Other Retail Banking: implied cost change (revenue - PBT),25366.82,25607.89,-241.07,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Other Retail Banking: PBT change,859.42,2034.09,1174.67,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Corporate/Wholesale Banking: revenue change,11806.71,14167.5,2360.79,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Corporate/Wholesale Banking: implied cost change (revenue - PBT),9069.5,10809.24,-1739.74,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Corporate/Wholesale Banking: PBT change,2737.21,3358.26,621.05,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Treasury: revenue change,8419.72,8487.17,67.45,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Treasury: implied cost change (revenue - PBT),5996.4,6823.32,-826.92,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Treasury: PBT change,2423.32,1663.85,-759.47,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Other Banking Business: revenue change,1036.21,915.57,-120.64,Change,Axis Bank Data file 1.pdf p5,
+Segment,4. Segment bridge,Other Banking Business: implied cost change (revenue - PBT),86.37,66.64,19.73,Derived,Axis Bank Data file 1.pdf p5,"All costs combined: internal funding charge, opex and provisions; not split in disclosures"
+Segment,4. Segment bridge,Other Banking Business: PBT change,949.84,848.93,-100.91,Change,Axis Bank Data file 1.pdf p5,

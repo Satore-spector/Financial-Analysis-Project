@@ -1,0 +1,68 @@
+
+## Ratios explained
+CAPM : 
+CAPM estimates the return shareholders demand for holding a stock this risky, using the risk-free rate plus the stock’s beta times the market premium. Think of it as the bank’s hurdle rate. Axis’s return on equity of 14.16% clears it by 1.15 percentage points, which means the bank is creating value for its owners rather than just earning a profit. The margin is modest, so a small further fall in profitability would close it.
+
+Yield on Advances : 
+This is the interest the bank earns on its loans, and loans are its main source of income. The 0.80 point drop comes from repo-rate cuts. Because about 74% of the loan book is floating-rate, lower policy rates pass through to borrowers quickly. Falling yields squeeze income per loan, so the bank has to grow its loan book to hold profit steady. Most banks face this, so it is more a sign of the rate cycle than of Axis doing something wrong. What matters is how fast its funding costs fall to match, and the data shows loan yields fell about twice as fast as funding costs.
+
+Yield on Investments : 
+This is what the bank earns on bonds and other securities, which is where it parks deposits it has not lent out. It matters because it is the bank’s second source of income. The lower figure reflects market conditions, and the note in your sheet adds that rising market yields mean lower bond prices and so fewer trading gains. That ties back to the earlier bridge, where trading income was a drag on profit.
+
+Axis is a strong third among private banks. The ratios suggest it is competitive but not the leader on returns. It beats its required return, but by less than we would like. Its income is falling on both sides of the balance sheet, loans and investments. Since both falls are largely rate-driven, they show the whole sector’s squeeze more than an Axis-specific weakness.
+
+
+
+# Segment Comparision : 
+A segment is a part of a business that can be analyzed independently. The retail customers, small businesses, large corporates or the treasury desk may be segments in a bank. In retail, they may be customers who have home loans, credit card holders or salaried individuals. A segment comparison enables these slices to be compared side-by-side using similar criteria, allowing you to see which are performing well and which are struggling.
+
+This is organised in a table called a segment comparison matrix. The segments go down the rows and the measures go across the columns. Typical columns are revenue, cost, profit, profit margin, share of total profit, default rate and return on assets. One number is contained in each cell, that represents one segment on one measure. When you read across a row, you will get the complete picture of one segment. When reading down a column, you know who is ahead or behind on that measure.
+The matrix is there because the bank in total is very diverse. A headline profit number is an average, and averages mask great star/poor performers. Some segments have high margins, but are small. Others are massive but not very profitable when taking into account risk and funding costs. Others appear innocuous, but consume a lot of capital.
+
+The matrix can be used to compare the segments on a common basis and can be used to answer practical questions, such as:
+What customers groups are the most profitable and which are the least profitable?
+Is a segment successful and efficient, or just big?
+What are the 'hot spots' of risk and are they compensated for with a higher return?
+What investment needs to be made in which segments and what repricing or tightening of lending should be done?
+
+The matrix also serves as a screening tool. A segment which has a good performance in one column but is lagging down in three other columns is alarming and will be investigated and studied to know where to investigate.
+
+
+# Profit Bridge : 
+A profit bridge or waterfall chart is a perfect way to understand the flow of profit. It starts with a starting profit amount, e.g. last year, and ends with a closing profit amount, e.g. this year. Between are a string of floating bars, each indicating one factor that increased or decreased profit. In general, green or upward bars indicate increases while red or downward bars indicate decreases. All the steps bring you back to the starting number. This is why it is called a "bridge": it is a path between two numbers which we can see.
+
+The steps can be interest income, fee income, trading income, operating costs, provisions for bad loans etc. for a bank. For one customer, interest on a loan, card charges, funding cost of that loan, servicing costs and losses on that loan.
+The before-and-after comparison is indicating that there was a change in profit. A bridge explains "why. Two companies could both increase their profits by 20%, but one company could have increased its profits by improving its lending practices, while the other decreased its spending on provisions that quarter. You can see that difference at a single look at the bridge.
+
+It  answers questions such as:
+What were the biggest profits or losses of any items?
+Was it a result of better core business, or was it a result of one-off events, and thereby an increase in profits?
+Are expenses increasing more rapid than earnings?
+What is the percentage of the result that is due to those items which are not repeatable?
+
+This is helpful for decision making. Similarly, if the majority of the increase is attributable to a sustainable increase, e.g., in fee income, the management may be more confident. The gain may be temporary if it is from a lower charge on the loss or if it is from a temporary gain, like a lower credit loss charge.
+
+
+# Driver Breakdown : 
+A driver is a cause that will make an outcome change. A driver breakdown will be used to break down a result – profit or margin – into the individual factors that created the result and indicate how much each of these factors contributed. Consider a school grade as consisting of exams, assignments and attendance. If a driver breaks down, it will indicate the amount of marks received for each part.
+
+In banking, drivers are typically broken down into a handful of categories:
+
+Volume: the amount of money that the bank has loaned or received as deposits.
+Interest Rate: the cost of borrowing (or the income from lending) expressed as a percentage.
+Mix: the percentage of business from each product and/or customer type.
+Cost: running costs and cost of financing.
+Risk: default & provisions for default.
+
+The driver break down breaks up these effects so they are not entangled with one another. The interest income could increase, for instance, if the bank increased the number of loans (volume) while the interest rate charged on each loan decreased (price) If you didn't split the two, you may have noticed only a slight increase, and you might not have realized there were two opposing forces at work.
+It is designed to uncover the actual reasons for performance. The driver breakdown is a deeper dive into what caused an item to change, when the profit bridge lists the items that changed.
+
+It assists in solving queries like:
+Do the extra customers generate income or do the existing customers generate more income?
+What is the relative contribution of the decline in interest rates and the change in type of lending to the margin squeeze?
+What are some things that are under the control of the bank, and what are some things that are determined by the market?
+How much will profit change if one driver changes, e.g., deposit cost?
+
+When the drivers are identified, the bank can experiment with what will happen if rates drop, if low CASA balances decline or if defaults increase.
+
+

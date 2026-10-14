@@ -1,0 +1,31 @@
+﻿entity,side,line_item,jun_2026_cr,mar_2026_cr,jun_2025_cr,yoy_growth_pct,qoq_growth_pct,source_file,source_page
+Standalone,Capital & Liabilities,Capital,622.16,621.63,620.24,0.31,0.09,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Employees' stock options outstanding,1346.47,1342.16,1124.42,19.75,0.32,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Reserves and surplus,211071.23,203572.63,184175.16,14.6,3.68,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Deposits,1372935.66,1335833.97,1161614.55,18.19,2.78,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Borrowings,237316.59,235270.61,180970.81,31.14,0.87,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Other liabilities and provisions,98674.06,110208.88,74802.5,31.91,-10.47,Axis Bank Data file 1.pdf,2
+Standalone,Capital & Liabilities,Total capital and liabilities,1921966.17,1886849.88,1603307.68,19.88,1.86,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Cash and balances with RBI,58656.77,78627.36,65606.06,-10.59,-25.4,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Balances with banks and money at call,72159.51,26275.32,33716.05,114.02,174.63,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Investments,438955.12,445032.8,360640.6,21.72,-1.37,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Advances,1261556.65,1233569.88,1059724.39,19.05,2.27,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Fixed assets,6602.75,6549.36,6372.37,3.62,0.82,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Other assets,84035.37,96795.16,77248.21,8.79,-13.18,Axis Bank Data file 1.pdf,2
+Standalone,Assets,Total assets,1921966.17,1886849.88,1603307.68,19.88,1.86,Axis Bank Data file 1.pdf,2
+Consolidated,Capital & Liabilities,Capital,622.16,621.63,620.24,0.31,0.09,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Employees' stock options outstanding,1473.91,1456.43,1205.91,22.22,1.2,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Reserves and surplus,220980.84,212957.29,192043.2,15.07,3.77,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Minority interest,836.25,798.19,670.91,24.64,4.77,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Deposits,1371173.07,1333791.44,1159584.25,18.25,2.8,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Borrowings,285257.98,280510.62,219991.64,29.67,1.69,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Other liabilities and provisions,105651.34,115914.69,79373.53,33.11,-8.85,Axis Bank Data file 1.pdf,7
+Consolidated,Capital & Liabilities,Total capital and liabilities,1985995.55,1946050.29,1653489.68,20.11,2.05,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Cash and balances with RBI,58656.85,78627.37,65606.12,-10.59,-25.4,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Balances with banks and money at call,76940.4,30724.2,36841.93,108.84,150.42,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Investments,438796.54,446422.18,361540.85,21.37,-1.71,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Advances,1315862.99,1282392.17,1102649.2,19.34,2.61,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Fixed assets,6814.93,6756.03,6577.09,3.62,0.87,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Other assets,88634.6,100839.1,79985.25,10.81,-12.1,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Goodwill on consolidation,289.24,289.24,289.24,0,0,Axis Bank Data file 1.pdf,7
+Consolidated,Assets,Total assets,1985995.55,1946050.29,1653489.68,20.11,2.05,Axis Bank Data file 1.pdf,7

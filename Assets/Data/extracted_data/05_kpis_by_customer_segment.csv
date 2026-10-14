@@ -1,0 +1,143 @@
+﻿kpi_id,theme,customer_segment,metric,value,unit,period,basis,source_file,source_page
+K001,Margins & returns,Bank,Net interest margin,3.46,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K002,Margins & returns,Bank,NIM change YoY,-34,bps,Q1FY27,,Axis Bank earnings call Conference Data.pdf,6
+K003,Margins & returns,Bank,NIM change QoQ,-16,bps,Q1FY27,,Axis Bank earnings call Conference Data.pdf,6
+K004,Margins & returns,Bank,NIM YoY decline due to repo rate cuts,-19,bps,Q1FY27,,Axis Bank earnings call Conference Data.pdf,6
+K005,Margins & returns,Bank,NIM YoY decline due to balance sheet mix,-16,bps,Q1FY27,,Axis Bank earnings call Conference Data.pdf,6
+K006,Margins & returns,Bank,Cost of funds change YoY,-35,bps,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K007,Margins & returns,Bank,Cost of funds change QoQ,-2,bps,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K008,Margins & returns,Bank,Return on average assets (annualized),1.51,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K009,Margins & returns,Bank,Return on average assets (annualized),1.47,%,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K010,Margins & returns,Bank,Return on equity (annualized),14.16,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K011,Margins & returns,Bank,Return on equity (annualized),13.14,%,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K012,Margins & returns,Group,Consolidated ROA (annualized),1.56,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,5
+K013,Margins & returns,Group,Consolidated ROE (annualized),14.52,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,5
+K014,Margins & returns,Bank,Cost to assets,2.2,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K015,Margins & returns,Bank,Fee to assets,1.3,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,6
+K016,Margins & returns,Bank,Technology & digital share of opex,11,%,Q1FY27,approx.,Axis Bank earnings call Conference Data.pdf,6
+K017,Margins & returns,Bank,Floating-rate share of loans,74,%,Q1FY27,approx.,Axis Bank earnings call Conference Data.pdf,7
+K018,Operating performance,Bank,Net interest income,14646,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K019,Operating performance,Bank,Net interest income,13560,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K020,Operating performance,Bank,Other income,6735,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K021,Operating performance,Bank,Other income,7258,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K022,Operating performance,Bank,Fee income,6156,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K023,Operating performance,Bank,Fee income,5746,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K024,Operating performance,Bank,Trading income,537,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K025,Operating performance,Bank,Trading income,1420,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K026,Operating performance,Bank,Miscellaneous income,42,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K027,Operating performance,Bank,Miscellaneous income,92,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K028,Operating performance,Bank,Operating revenue,21382,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K029,Operating performance,Bank,Operating revenue,20818,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K030,Operating performance,Bank,Core operating revenue (ex trading),20844,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K031,Operating performance,Bank,Core operating revenue (ex trading),19398,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K032,Operating performance,Bank,Operating expenses,9722,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K033,Operating performance,Bank,Operating expenses,9303,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K034,Operating performance,Bank,Operating profit,11659,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K035,Operating performance,Bank,Operating profit,11515,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K036,Operating performance,Bank,Core operating profit (ex trading),11122,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K037,Operating performance,Bank,Core operating profit (ex trading),10095,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K038,Operating performance,Bank,Net profit,7114,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,7
+K039,Operating performance,Bank,Net profit,5806,INR crore,Q1FY26,,Axis Bank Press release for additional metrics.pdf,7
+K040,Fees,Retail,Retail fees share of total fees,67,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K041,Fees,Retail,Retail fees growth YoY,2,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K042,Fees,Corporate & Commercial,Corporate & commercial banking fees,2004,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K043,Fees,Corporate & Commercial,Corporate & commercial banking fees growth YoY,18,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K044,Fees,Corporate & Commercial,Corporate & commercial banking fees growth QoQ,16,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K045,Fees,Bank,Granular fees share of total fees,90,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K046,Deposits & CASA,Bank,Total deposits growth YoY,18,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,1
+K047,Deposits & CASA,Bank,Term deposits growth YoY,21,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,1
+K048,Deposits & CASA,Bank,Current account growth YoY,13,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,1
+K049,Deposits & CASA,Bank,Savings account growth YoY,14,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,1
+K050,Deposits & CASA,Bank,CASA growth YoY,13,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,1
+K051,Deposits & CASA,Bank,Total deposits growth YoY,18,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,1
+K052,Deposits & CASA,Bank,Term deposits growth YoY,23,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,1
+K053,Deposits & CASA,Bank,Current account growth YoY,6,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,1
+K054,Deposits & CASA,Bank,Savings account growth YoY,14,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,1
+K055,Deposits & CASA,Bank,CASA growth YoY,11,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,1
+K056,Deposits & CASA,Bank,Total deposits growth QoQ,6,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K057,Deposits & CASA,Bank,Term deposits growth QoQ,7,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K058,Deposits & CASA,Bank,Current account growth QoQ,3,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K059,Deposits & CASA,Bank,Savings account growth QoQ,6,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K060,Deposits & CASA,Bank,CASA growth QoQ,5,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K061,Deposits & CASA,Bank,Total deposits growth QoQ,3,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K062,Deposits & CASA,Bank,Term deposits growth QoQ,5,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K063,Deposits & CASA,Bank,Current account growth QoQ,-6,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K064,Deposits & CASA,Bank,Savings account growth QoQ,1,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K065,Deposits & CASA,Bank,CASA growth QoQ,-1,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K066,Deposits & CASA,Bank,CASA ratio,37,%,Q1FY27,QAB,Axis Bank Press release for additional metrics.pdf,2
+K067,Deposits & CASA,Bank,CASA ratio,38,%,Q1FY27,MEB,Axis Bank Press release for additional metrics.pdf,2
+K068,Deposits & CASA,Bank,CASA ratio,40,%,Q1FY26,MEB,Axis Bank Press release for additional metrics.pdf,8
+K069,Deposits & CASA,Bank,CASA ratio,38,%,Q1FY26,QAB,Axis Bank Press release for additional metrics.pdf,8
+K070,Deposits & CASA,Retail,NTB average balances growth YoY,18,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,3
+K071,Deposits & CASA,Retail,Corporate salary NTB average balance growth YoY,30,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,3
+K072,Deposits & CASA,Retail,Existing-to-bank salary book growth YoY,18,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,3
+K073,Deposits & CASA,Retail,SA accounts opened via tab banking,66,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K074,Deposits & CASA,Retail,Individual retail TDs opened digitally (by value),48,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K075,Deposits & CASA,Wealth,Burgundy wealth AUM,753819,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K076,Deposits & CASA,Wealth,Burgundy Private AUM,268058,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K077,Deposits & CASA,Wealth,Burgundy Private families,17408,count,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K078,Loans,Retail,Retail share of advances,54,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K079,Loans,Corporate,Corporate share of advances,34,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K080,Loans,Commercial Banking Group (CBG),CBG share of advances,12,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K081,Loans,SME,SME loans growth QoQ,3,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K082,Loans,Corporate,Corporate loans growth QoQ,5,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K083,Loans,Mid-Corporate,Mid-corporate loans growth YoY,27,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K084,Loans,Mid-Corporate,Mid-corporate loans growth QoQ,10,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K085,Loans,SBB + SME + Mid-Corporate,SBB+SME+MC loans,306100,INR crore,Q1FY27,"reported as INR 3,061 bn",Axis Bank Press release for additional metrics.pdf,1
+K086,Loans,SBB + SME + Mid-Corporate,SBB+SME+MC share of total loans,24,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K087,Loans,SBB + SME + Mid-Corporate,SBB+SME+MC growth YoY,24,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K088,Loans,Corporate,Corporate book rated A- and above,91,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K089,Loans,Corporate,Incremental corporate sanctions rated A- and above,87,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K090,Loans,Retail,Small Business Banking growth YoY,18,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K091,Loans,Retail,Small Business Banking growth QoQ,2,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K092,Loans,Retail,Loan against property growth YoY,11,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K093,Loans,Retail,Personal loans growth YoY,7,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K094,Loans,Retail,Credit card advances growth YoY,5,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K095,Loans,Retail,Rural loans growth YoY,16,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K096,Loans,Retail,Secured share of retail loans,73,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K097,Loans,Retail,Home loans share of retail book,26,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K098,Loans,Retail,Retail disbursement growth YoY,18,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K099,Loans,Retail,Home loan disbursement growth YoY,24,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K100,Loans,Retail,Vehicle loan disbursement growth YoY,21,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K101,Loans,Retail,Retail agri disbursement growth YoY,16,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K102,Loans,Retail,Personal loan disbursement growth YoY,23,%,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K103,Credit cards,Retail,New credit cards issued,0.92,million,Q1FY27,,Axis Bank Press release for additional metrics.pdf,4
+K104,Credit cards,Retail,Cards-in-force market share,13.4,%,Q1FY27,RBI data May-26,Axis Bank Press release for additional metrics.pdf,1
+K105,Asset quality,Bank,Gross NPA ratio,1.28,%,Q1FY27,,Axis Bank Data file 1.pdf,1
+K106,Asset quality,Bank,Gross NPA ratio,1.23,%,Q4FY26,,Axis Bank Data file 1.pdf,1
+K107,Asset quality,Bank,Gross NPA ratio,1.57,%,Q1FY26,,Axis Bank Data file 1.pdf,1
+K108,Asset quality,Bank,Net NPA ratio,0.39,%,Q1FY27,,Axis Bank Data file 1.pdf,1
+K109,Asset quality,Bank,Net NPA ratio,0.37,%,Q4FY26,,Axis Bank Data file 1.pdf,1
+K110,Asset quality,Bank,Net NPA ratio,0.45,%,Q1FY26,,Axis Bank Data file 1.pdf,1
+K111,Asset quality,Bank,Gross NPA amount,17124.33,INR crore,Q1FY27,,Axis Bank Data file 1.pdf,1
+K112,Asset quality,Bank,Gross NPA amount,16083.65,INR crore,Q4FY26,,Axis Bank Data file 1.pdf,1
+K113,Asset quality,Bank,Gross NPA amount,17764.66,INR crore,Q1FY26,,Axis Bank Data file 1.pdf,1
+K114,Asset quality,Bank,Net NPA amount,5192.56,INR crore,Q1FY27,,Axis Bank Data file 1.pdf,1
+K115,Asset quality,Bank,Net NPA amount,4789.59,INR crore,Q4FY26,,Axis Bank Data file 1.pdf,1
+K116,Asset quality,Bank,Net NPA amount,5065.99,INR crore,Q1FY26,,Axis Bank Data file 1.pdf,1
+K117,Asset quality,Bank,Provision coverage ratio,70,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K118,Asset quality,Bank,Net credit cost (annualized),0.63,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K119,Asset quality,Bank,Net credit cost,2079,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K120,Asset quality,Bank,Gross slippage ratio (annualized),1.79,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K121,Asset quality,Bank,Net slippage ratio (annualized),1.12,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,2
+K122,Asset quality,Retail,Gross slippages,5176,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K123,Asset quality,Retail,Net slippages,3204,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K124,Asset quality,Retail,Net slippages adj. for write-off recoveries,2614,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K125,Asset quality,CBG,Gross slippages,266,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K126,Asset quality,CBG,Net slippages,210,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K127,Asset quality,CBG,Net slippages adj. for write-off recoveries,136,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K128,Asset quality,Wholesale (WBCG),Gross slippages,124,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K129,Asset quality,Wholesale (WBCG),Net slippages,26,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K130,Asset quality,Wholesale (WBCG),Net slippages adj. for write-off recoveries,-271,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K131,Asset quality,Bank,Gross slippages,5566,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K132,Asset quality,Bank,Net slippages,3440,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K133,Asset quality,Bank,Net slippages adj. for write-off recoveries,2479,INR crore,Q1FY27,,Axis Bank earnings call Conference Data.pdf,7
+K134,Asset quality,Bank,Recoveries from written-off accounts,961,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K135,Asset quality,Bank,Recoveries and upgrades from NPAs,2126,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K136,Asset quality,Bank,NPA write-offs,2399,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,5
+K137,Asset quality,Bank,Cumulative non-NPA provisions,15608,INR crore,Q1FY27,,Axis Bank Press release for additional metrics.pdf,3
+K138,Capital,Bank,Capital adequacy ratio,16.67,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,8
+K139,Capital,Bank,Capital adequacy ratio,16.85,%,Q1FY26,,Axis Bank Press release for additional metrics.pdf,8
+K140,Capital,Bank,CET-1 ratio,14.64,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,1
+K141,Capital,Bank,Tier I ratio,15.35,%,Q1FY27,,Axis Bank Press release for additional metrics.pdf,8
+K142,Capital,Bank,Tier I ratio,15.1,%,Q1FY26,,Axis Bank Press release for additional metrics.pdf,8

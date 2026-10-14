@@ -1,0 +1,66 @@
+﻿ratio_group,ratio,formula,Q1FY27,Q1FY26,change,unit,type,source,note
+CASA,CASA ratio (month-end),CASA / total deposits,38,40.3,-2.3,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+CASA,CASA ratio (quarterly average),Reported,37,38,-1,%,Reported,Axis Bank Press release for additional metrics.pdf p8,
+CASA,Savings ratio,SA / total deposits,25.37,26.27,-0.9,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+CASA,Current account ratio,CA / total deposits,12.63,14.04,-1.41,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+CASA,Savings share of CASA,SA / CASA,66.77,65.18,1.59,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+CASA,Incremental CASA share,Change in CASA / change in total deposits (YoY),25.33,,,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,Share of new deposits that came as CASA
+CASA,CASA growth minus term deposit growth,CASA YoY growth - TD YoY growth,-11.32,,,pp,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+CASA,CASA to advances,CASA / net advances,41.35,44.18,-2.82,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,Share of loans funded by low-cost deposits
+Loans,Credit-deposit ratio,Net advances / total deposits,91.89,91.23,0.66,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,Corporate share of advances,Corporate advances / net advances,34.43,29.81,4.62,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,Corporate share of incremental loans,Change in Corporate / change in net advances,58.71,,,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,SME share of advances,SME advances / net advances,12.02,11.41,0.61,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,SME share of incremental loans,Change in SME / change in net advances,15.23,,,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,Retail share of advances,Retail advances / net advances,53.55,58.79,-5.24,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,Retail share of incremental loans,Change in Retail / change in net advances,26.05,,,%,Calculated,Axis Bank Press release for additional metrics.pdf p8,
+Loans,Yield on advances (approx.),Interest on advances x4 / period-end advances,8.41,9.21,-0.81,%,Calculated,Axis Bank Data file 1.pdf p1-2,Period-end denominator; true yield uses average balances
+Loans,Yield on investments (approx.),Income on investments x4 / period-end investments,6.1,6.81,-0.71,%,Calculated,Axis Bank Data file 1.pdf p1-2,Period-end denominator
+Loans,Cost of funds (approx.),Interest expended x4 / (deposits + borrowings),4.8,5.21,-0.41,%,Calculated,Axis Bank Data file 1.pdf p1-2,Reported change is -35 bps; this proxy uses period-end balances
+Loans,Loan spread (approx.),Yield on advances - cost of funds,3.6,4,-0.39,pp,Calculated,Axis Bank Data file 1.pdf p1-2,
+Loans,Net interest margin,Reported,3.46,3.8,-0.34,%,Reported,Axis Bank Press release for additional metrics.pdf p2 / Axis Bank earnings call Conference Data.pdf p6,Q1FY26 = 3.46 + 34 bps YoY decline
+Credit quality,Gross NPA ratio,Reported,1.28,1.57,-0.29,%,Reported,Axis Bank Data file 1.pdf p1,
+Credit quality,Net NPA ratio,Reported,0.39,0.45,-0.06,%,Reported,Axis Bank Data file 1.pdf p1,
+Credit quality,Provision coverage ratio,1 - net NPA / gross NPA,69.68,71.48,-1.81,%,Calculated,Axis Bank Data file 1.pdf p1,
+Credit quality,"Provisions to loans (annualized, approx.)",Provisions x4 / period-end advances,0.7,1.49,-0.79,%,Calculated,Axis Bank Data file 1.pdf p1,Includes all provisions; reported net credit cost is 0.63%
+Credit quality,Net credit cost,Reported,0.63,1.38,-0.75,%,Reported,Axis Bank Press release for additional metrics.pdf p2,Q1FY26 = 0.63 + 75 bps
+Credit quality,Retail share of gross slippages,Retail slippages / total,92.99,,,%,Calculated,Axis Bank earnings call Conference Data.pdf p7,
+Credit quality,Retail gross slippage ratio (annualized),Retail gross slippages x4 / retail advances,3.06,,,%,Calculated,"Axis Bank earnings call Conference Data.pdf p7, Axis Bank Press release for additional metrics.pdf p8",
+Credit quality,CBG gross slippage ratio (annualized),CBG gross slippages x4 / SME advances,0.7,,,%,Calculated,"Axis Bank earnings call Conference Data.pdf p7, Axis Bank Press release for additional metrics.pdf p8",Assumes CBG book is close to the SME book; approximation
+Credit quality,Wholesale gross slippage ratio (annualized),Wholesale slippages x4 / corporate advances,0.11,,,%,Calculated,"Axis Bank earnings call Conference Data.pdf p7, Axis Bank Press release for additional metrics.pdf p8",
+Credit quality,Retail net slippage ratio adj. for recoveries (annualized),Retail net slippages adj. x4 / retail advances,1.55,,,%,Calculated,"Axis Bank earnings call Conference Data.pdf p7, Axis Bank Press release for additional metrics.pdf p8",
+Credit quality,Gross slippage ratio (bank),Reported,1.79,3.13,-1.34,%,Reported,Axis Bank Press release for additional metrics.pdf p2,Q1FY26 = 1.79 + 134 bps
+Segment profitability,Retail Banking: return on segment assets (annualized),PBT x4 / segment assets,2.08,0.9,1.18,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Retail Banking: PBT margin,PBT / segment revenue,9.32,4.03,5.29,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Retail Banking: share of bank PBT,Segment PBT / total PBT,37.78,18.97,18.81,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Retail Banking: liabilities to assets,Segment liabilities / segment assets,1.65,1.45,0.2,x,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Retail Banking: contribution to PBT change (YoY),Change in segment PBT / change in bank PBT,113.94,,,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Digital Banking: return on segment assets (annualized),PBT x4 / segment assets,3.99,1.75,2.24,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Digital Banking: PBT margin,PBT / segment revenue,14.41,6.13,8.28,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Digital Banking: share of bank PBT,Segment PBT / total PBT,16.23,7.62,8.61,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Digital Banking: liabilities to assets,Segment liabilities / segment assets,1.5,1.44,0.06,x,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Digital Banking: contribution to PBT change (YoY),Change in segment PBT / change in bank PBT,51.09,,,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Other Retail Banking: return on segment assets (annualized),PBT x4 / segment assets,1.53,0.68,0.85,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Other Retail Banking: PBT margin,PBT / segment revenue,7.36,3.28,4.08,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Other Retail Banking: share of bank PBT,Segment PBT / total PBT,21.56,11.36,10.2,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Other Retail Banking: liabilities to assets,Segment liabilities / segment assets,1.69,1.45,0.24,x,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Other Retail Banking: contribution to PBT change (YoY),Change in segment PBT / change in bank PBT,62.85,,,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Corporate/Wholesale Banking: return on segment assets (annualized),PBT x4 / segment assets,2.24,2.45,-0.21,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Corporate/Wholesale Banking: PBT margin,PBT / segment revenue,23.7,23.18,0.52,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Corporate/Wholesale Banking: share of bank PBT,Segment PBT / total PBT,35.59,36.17,-0.58,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Corporate/Wholesale Banking: liabilities to assets,Segment liabilities / segment assets,0.4,0.49,-0.09,x,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Corporate/Wholesale Banking: contribution to PBT change (YoY),Change in segment PBT / change in bank PBT,33.23,,,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Treasury: return on segment assets (annualized),PBT x4 / segment assets,1.06,1.9,-0.84,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Treasury: PBT margin,PBT / segment revenue,19.6,28.78,-9.18,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Treasury: share of bank PBT,Segment PBT / total PBT,17.63,32.02,-14.39,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Treasury: liabilities to assets,Segment liabilities / segment assets,0.53,0.52,0.01,x,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Treasury: contribution to PBT change (YoY),Change in segment PBT / change in bank PBT,-40.63,,,%,Calculated,Axis Bank Data file 1.pdf p5,
+Segment profitability,Retail: net funds provided as % of bank deposits,(Retail liabilities - assets) / total deposits,32.38,24.8,7.58,%,Calculated,"Axis Bank Data file 1.pdf p5, Axis Bank Press release for additional metrics.pdf p8",
+Bank profitability,Cost-to-income ratio,Opex / (NII + other income),45.47,44.69,0.79,%,Calculated,Axis Bank Data file 1.pdf p1,
+Bank profitability,Fee income share of operating revenue,Fee income / operating revenue,28.79,27.6,1.19,%,Calculated,Axis Bank Press release for additional metrics.pdf p7,
+Bank profitability,NII share of operating revenue,NII / operating revenue,68.5,65.14,3.36,%,Calculated,Axis Bank Data file 1.pdf p1,
+Bank profitability,Provisions to operating profit,Provisions / operating profit,19.06,34.28,-15.22,%,Calculated,Axis Bank Data file 1.pdf p1,
+Bank profitability,Return on assets (annualized),Reported,1.51,1.47,0.04,%,Reported,Axis Bank Press release for additional metrics.pdf p7,
+Bank profitability,Return on equity (annualized),Reported,14.16,13.14,1.02,%,Reported,Axis Bank Press release for additional metrics.pdf p7,
+Bank profitability,Cost to assets,Reported,2.2,2.41,-0.21,%,Reported,Axis Bank Press release for additional metrics.pdf p1,Q1FY26 = 2.20 + 21 bps
+Bank profitability,Capital adequacy ratio,Reported,16.67,16.85,-0.18,%,Reported,Axis Bank Data file 1.pdf p1,
