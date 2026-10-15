@@ -1,18 +1,20 @@
 # ==========================================================
 # Customer Segment Profitability Analysis - Axis Bank
 # Single continuous page Shiny dashboard (skeleton)
-## Folder layout:
+#
+# Folder layout:
 #   Fin_dashboard/
 #   ├── app.R
+#   ├── modules/
+#   │   └── eda.R            <- EDA charts + carousel
 #   └── Assets/
-#       └── imgs/
-#           └── axis_logo.png
-#       └── data/
-#         └──extracted_data
-#       └── scripts
+#       ├── imgs/axis_logo.png
+#       └── Data/extracted_data/*.csv
 # ==========================================================
 
 library(shiny)
+library(ggplot2)
+library(scales)
 
 # ---- Assets ----
 # Serves Fin_dashboard/Assets/imgs/ at the URL prefix "imgs/".
@@ -23,6 +25,10 @@ app_dir <- tryCatch(
   error = function(e) getwd()                  # when run via runApp()
 )
 addResourcePath("imgs", file.path(app_dir, "Assets", "imgs"))
+
+# ---- Data + EDA module ----
+data_dir <- file.path(app_dir, "Assets", "Data", "extracted_data")
+source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
 
 # ---- Axis Bank palette (edit here, applies everywhere) ----
 axis_colors <- list(
@@ -233,6 +239,137 @@ html, body {
   axis_colors$light, axis_colors$text
 )
 
+# ---- Carousel CSS + JS ----
+carousel_css <- "
+.carousel { width: 100%; }
+.carousel-viewport { overflow: hidden; border-radius: 12px; }
+.carousel-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.carousel-slide { flex: 0 0 100%; min-width: 0; box-sizing: border-box; padding: 4px; }
+.slide-card {
+  background: #FFFFFF;
+  border-top: 5px solid var(--axis-burgundy);
+  border-radius: 10px;
+  padding: 22px 28px 18px 28px;
+  box-shadow: 0 2px 14px rgba(107, 14, 55, 0.10);
+}
+.slide-title {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--axis-maroon);
+}
+.slide-card .shiny-plot-output { min-height: 300px; }
+.slide-takeaway {
+  margin: 12px 0 0 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 1000px;
+}
+.slide-takeaway .tag {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  background: var(--axis-burgundy);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+.carousel-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--axis-burgundy);
+  background: transparent;
+  color: var(--axis-burgundy);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.carousel-btn:hover, .carousel-btn:focus-visible {
+  background: var(--axis-burgundy);
+  color: #FFFFFF;
+  outline: none;
+}
+.carousel-dots { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--axis-burgundy);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.dot.active { background: var(--axis-burgundy); transform: scale(1.25); }
+.carousel-counter { font-size: 0.85rem; font-weight: 500; color: var(--axis-maroon); min-width: 48px; text-align: center; }
+"
+
+carousel_js <- "
+(function () {
+  function init() {
+    var root = document.getElementById('eda-carousel');
+    var track = document.getElementById('eda-track');
+    if (!root || !track) return;
+
+    var total = track.children.length;
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.dot'));
+    var counter = document.getElementById('eda-counter');
+    var idx = 0;
+
+    function go(i) {
+      idx = (i + total) % total;                      // wraps around at both ends
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function (d, k) { d.classList.toggle('active', k === idx); });
+      counter.textContent = (idx + 1) + ' / ' + total;
+    }
+
+    document.getElementById('eda-prev').addEventListener('click', function () { go(idx - 1); });
+    document.getElementById('eda-next').addEventListener('click', function () { go(idx + 1); });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { go(parseInt(d.getAttribute('data-index'), 10)); });
+    });
+
+    // Left/right arrow keys, only while the carousel is on screen
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var r = root.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      e.preventDefault();
+      go(idx + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+
+    // Swipe on touch screens
+    var startX = null;
+    root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) go(idx + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+
+    go(0);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+"
+
 # ---- Small UI helpers ----
 stat_card <- function(value, label, note = NULL, warn = FALSE) {
   div(class = if (warn) "stat-card warn" else "stat-card",
@@ -303,7 +440,9 @@ ui <- fluidPage(
   title = "Axis Bank | Customer Segment Profitability",
   tags$head(
     tags$style(HTML(app_css)),
-    tags$script(HTML(scroll_js))
+    tags$style(HTML(carousel_css)),
+    tags$script(HTML(scroll_js)),
+    tags$script(HTML(carousel_js))
   ),
 
   # Hero
@@ -351,11 +490,12 @@ ui <- fluidPage(
         stat_card("\u20B97,114 cr", "Standalone net profit", "Up 23% from \u20B95,806 cr a year ago"),
         stat_card("\u20B914,646 cr", "Net interest income", "Up 8%"),
         stat_card("\u20B911,122 cr", "Core operating profit", "Up 10%"),
-        stat_card("3.46%", "Net interest margin", "Narrowed from 3.80% a year ago", warn = TRUE)
+        stat_card("3.46%", "Net interest margin", "Narrowed from 3.80% a year ago", warn = TRUE),
+        stat_card("38.0%", "CASA ratio (month-end)", "Down from 40.3% a year ago", warn = TRUE)
       ),
       div(class = "callout",
         h4("Why the margin matters for this study"),
-        p("Loans grew faster than cheap funding. Net advances rose 19% to \u20B912.6 lakh crore, while CASA deposits grew only 11.4% and term deposits grew 22.8%. The CASA ratio fell from 39.6% in the previous quarter to its lowest level since Q1 2017. In effect, Axis is funding more of its lending at a higher cost. That is why a customer who holds a loan, a credit card and a CASA balance is far more profitable than one who borrows without keeping deposits.")
+        p("Loans grew faster than cheap funding. Net advances rose 19% to \u20B912.6 lakh crore, while CASA deposits grew only 11.4% and term deposits grew 22.8%. The month-end CASA ratio fell to 38.0% from 40.3% a year ago, its lowest level since Q1 2017. In effect, Axis is funding more of its lending at a higher cost. That is why a customer who holds a loan, a credit card and a CASA balance is far more profitable than one who borrows without keeping deposits.")
       )
     ),
 
@@ -401,20 +541,20 @@ ui <- fluidPage(
     div(class = "fade-item",
       h2(class = "section-heading", "Reading the Ratios"),
       p(class = "lead",
-        "Three ratios show how Axis compares with the return its shareholders demand, and how falling interest rates are hitting income."),
+        "Three ratios show how Axis compares with the return its shareholders demand, and how falling interest rates are hitting income. Yield figures are approximate."),
       div(class = "ratio-grid",
         ratio_card(
-          "CAPM (hurdle rate)", "ROE 14.16%", "1.15 percentage points above the hurdle",
+          "CAPM (hurdle rate)", "ROE 14.16%", "1.15 percentage points above the hurdle (up from 13.14% a year ago)",
           "CAPM estimates the return shareholders demand for holding a stock this risky: the risk-free rate plus the stock's beta times the market premium. Think of it as the bank's hurdle rate.",
           "Axis's return on equity of 14.16% clears it by 1.15 percentage points, so the bank is creating value for its owners rather than just earning a profit. The margin is modest, so a small further fall in profitability would close it."
         ),
         ratio_card(
-          "Yield on advances", "\u25BC 0.80 pt", "Fall in the interest earned on loans",
+          "Yield on advances", "8.41%", "\u25BC 0.80 pt from 9.21% a year ago",
           "The interest the bank earns on its loans, which are its main source of income.",
-          "The drop comes from repo-rate cuts. About 74% of the loan book is floating-rate, so lower policy rates reach borrowers quickly. Falling yields squeeze income per loan, so the bank must grow its loan book to hold profit steady. What matters is how fast funding costs fall to match, and loan yields have fallen about twice as fast."
+          "The drop comes from repo-rate cuts. About 74% of the loan book is floating-rate, so lower policy rates reach borrowers quickly. Falling yields squeeze income per loan, so the bank must grow its loan book to hold profit steady. What matters is how fast funding costs fall to match: cost of funds fell 0.41 points (5.21% to 4.80%), so loan yields fell about twice as fast."
         ),
         ratio_card(
-          "Yield on investments", "\u25BC Lower", "Second source of income",
+          "Yield on investments", "6.10%", "\u25BC 0.71 pt from 6.81% a year ago",
           "What the bank earns on bonds and other securities, where it parks deposits it has not lent out.",
           "The lower figure reflects market conditions. Rising market yields mean lower bond prices and so fewer trading gains, which ties back to the profit bridge, where trading income was a drag on profit."
         )
@@ -428,12 +568,22 @@ ui <- fluidPage(
         p("Axis is a strong third among private banks. It is competitive but not the leader on returns, and it beats its required return by less than we would like. Income is falling on both sides of the balance sheet, loans and investments. Both falls are largely rate-driven, so they show the whole sector's squeeze more than an Axis-specific weakness.")
       )
     )
+  ),
+
+  # ======================= SECTION 3: EDA CAROUSEL =======================
+  div(class = "dash-section",
+    div(class = "fade-item",
+      h2(class = "section-heading", "Exploratory Data Analysis"),
+      p(class = "lead",
+        "Nine charts on segment profit, growth, funding and asset quality. Use the arrows, the dots or the left and right keys to move between them."),
+      eda_carousel_ui()
+    )
   )
 )
 
 # ---- Server ----
 server <- function(input, output, session) {
-  # Reactive logic and outputs will go here
+  eda_server(output)
 }
 
 shinyApp(ui, server)
