@@ -7,7 +7,8 @@
 #   ├── app.R
 #   ├── modules/
 #   │   ├── eda.R            <- EDA charts + carousel
-#   │   └── bridge.R         <- profit bridge
+#   │   ├── bridge.R         <- profit bridge
+#   │   └── drivers_kpis.R   <- driver breakdown + 8 KPIs
 #   └── Assets/
 #       ├── imgs/axis_logo.png
 #       └── Data/extracted_data/*.csv
@@ -31,6 +32,7 @@ addResourcePath("imgs", file.path(app_dir, "Assets", "imgs"))
 data_dir <- file.path(app_dir, "Assets", "Data", "extracted_data")
 source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
 source(file.path(app_dir, "modules", "bridge.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
+source(file.path(app_dir, "modules", "drivers_kpis.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 
 # ---- Axis Bank palette (edit here, applies everywhere) ----
 axis_colors <- list(
@@ -444,6 +446,7 @@ ui <- fluidPage(
     tags$style(HTML(app_css)),
     tags$style(HTML(carousel_css)),
     tags$style(HTML(bridge_css)),
+    tags$style(HTML(dk_css)),
     tags$script(HTML(scroll_js)),
     tags$script(HTML(carousel_js))
   ),
@@ -586,6 +589,16 @@ ui <- fluidPage(
   # ======================= SECTION 4: PROFIT BRIDGE =======================
   div(class = "dash-section",
     bridge_ui()
+  ),
+
+  # ======================= SECTION 5: DRIVER BREAKDOWN =======================
+  div(class = "dash-section",
+    drivers_ui()
+  ),
+
+  # ======================= SECTION 6: EIGHT KPIs =======================
+  div(class = "dash-section",
+    kpis_ui()
   )
 )
 
@@ -593,6 +606,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   eda_server(output)
   bridge_server(output)
+  drivers_kpis_server(output)
 }
 
 shinyApp(ui, server)
