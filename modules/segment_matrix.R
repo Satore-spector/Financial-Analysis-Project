@@ -134,7 +134,7 @@ sm_table_ui <- function() {
     )
   }
   head <- tags$tr(
-    tags$th(class = "mx-metric", "Metric"), tags$th("Better if"),
+    tags$th(class = "mx-metric", "Metric"), tags$th("Direction"),
     lapply(seq_along(sm_segments), function(i)
       tags$th(sm_heads[i], if (nzchar(sm_subhead[i])) div(class = "mx-sub", sm_subhead[i])))
   )
