@@ -58,7 +58,7 @@ plot_bridge <- function() {
                  linetype = "dotted", colour = pal$muted, linewidth = 0.5) +
     geom_rect(data = wf, aes(xmin = i - 0.34, xmax = i + 0.34, ymin = bot, ymax = top, fill = cat)) +
     geom_text(data = wf, aes(x = i, y = top, label = lab), vjust = -0.6,
-              family = plot_font, size = 3.8, fontface = "bold", colour = pal$text) +
+              family = plot_font, size = 5.2, fontface = "bold", colour = pal$text) +
     scale_fill_manual(values = c("Total" = "#3D3D3D", "Adds to profit" = pal$primary,
                                  "Reduces profit" = pal$muted)) +
     scale_x_continuous(breaks = seq_len(b_n), labels = unname(bridge_axis_labels[bridge_raw$driver]),
@@ -168,7 +168,7 @@ bridge_ui <- function() {
 }
 
 bridge_css <- "
-.table-wrap { overflow-x: auto; max-width: 1000px; }
+.table-wrap { overflow-x: auto; max-width: 1300px; }
 .bridge-table {
   width: 100%;
   border-collapse: collapse;

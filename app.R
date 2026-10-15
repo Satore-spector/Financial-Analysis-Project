@@ -59,6 +59,8 @@ app_css <- sprintf("
   --axis-text:     %s;
 }
 
+html { font-size: 140%%; }  /* presentation scale: all rem text is 1.4x; hero title is compensated below */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -95,7 +97,7 @@ html, body {
 .hero-title {
   font-family: 'Roboto Mono', monospace;
   font-weight: 700;
-  font-size: clamp(1.5rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.0714rem, 3.2vw, 2rem);  /* same 24-44.8px as before */
   line-height: 1.3;
   max-width: 1000px;
   margin: 0;
@@ -143,12 +145,12 @@ html, body {
 .lead {
   font-size: 1.05rem;
   line-height: 1.8;
-  max-width: 900px;
+  max-width: 1200px;
 }
 .body-text {
   font-size: 0.95rem;
   line-height: 1.8;
-  max-width: 900px;
+  max-width: 1200px;
 }
 .sub-heading {
   font-weight: 700;
@@ -163,7 +165,7 @@ html, body {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 20px;
 }
 .stat-card {
@@ -198,14 +200,14 @@ html, body {
   padding: 28px 32px;
   margin-top: 24px;
   line-height: 1.8;
-  max-width: 1100px;
+  max-width: 1400px;
 }
 .callout h4 { margin: 0 0 10px 0; font-weight: 700; }
 .callout p  { margin: 0; font-size: 0.95rem; }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
 .product-card {
@@ -220,7 +222,7 @@ html, body {
 
 .ratio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 20px;
 }
 .ratio-card {
@@ -275,7 +277,7 @@ carousel_css <- "
   margin: 12px 0 0 0;
   font-size: 0.9rem;
   line-height: 1.7;
-  max-width: 1000px;
+  max-width: 1300px;
 }
 .slide-takeaway .tag {
   display: inline-block;
@@ -324,7 +326,7 @@ carousel_css <- "
   transition: background 0.2s, transform 0.2s;
 }
 .dot.active { background: var(--axis-burgundy); transform: scale(1.25); }
-.carousel-counter { font-size: 0.85rem; font-weight: 500; color: var(--axis-maroon); min-width: 48px; text-align: center; }
+.carousel-counter { font-size: 0.85rem; font-weight: 500; color: var(--axis-maroon); min-width: 64px; text-align: center; }
 "
 
 carousel_js <- "

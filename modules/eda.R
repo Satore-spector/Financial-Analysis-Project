@@ -34,7 +34,7 @@ pal <- list(
   grid    = "#EADDE3"
 )
 
-theme_axis <- function(base_size = 13) {
+theme_axis <- function(base_size = 18) {
   theme_minimal(base_size = base_size, base_family = plot_font) +
     theme(
       plot.background    = element_rect(fill = "white", colour = NA),
@@ -70,7 +70,7 @@ q1 <- profit[profit$entity == "Standalone" & profit$period == "Q1FY27" &
 q1 <- q1[order(-q1$segment_pbt_cr), ]
 
 # ---- Chart builders ----
-txt_size <- 3.5
+txt_size <- 4.8
 inr <- "\u20B9"
 
 # One bar per category

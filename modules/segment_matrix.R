@@ -150,7 +150,7 @@ plot_sm_margin <- function() {
   ggplot(d, aes(x = seg, y = m, fill = per)) +
     geom_col(position = dodge, width = 0.72) +
     geom_text(aes(label = lab), position = dodge, vjust = -0.5,
-              family = plot_font, size = 3.4, colour = pal$text) +
+              family = plot_font, size = 4.7, colour = pal$text) +
     scale_fill_manual(values = setNames(c(pal$rose, pal$muted, pal$primary), per)) +
     scale_y_continuous(labels = function(x) paste0(x, "%"), expand = expansion(mult = c(0, 0.12))) +
     labs(x = NULL, y = "PBT margin (% of gross segment revenue)") +
@@ -232,7 +232,7 @@ sm_css <- "
   border-collapse: separate;
   border-spacing: 3px;
   font-size: 0.88rem;
-  min-width: 860px;
+  min-width: 1180px;
 }
 .mx-table th {
   background: var(--axis-burgundy);

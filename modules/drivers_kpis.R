@@ -64,7 +64,7 @@ plot_nii <- function() {
                  linetype = "dotted", colour = pal$muted, linewidth = 0.5) +
     geom_rect(data = wf, aes(xmin = i - 0.34, xmax = i + 0.34, ymin = bot, ymax = top, fill = cat)) +
     geom_text(data = wf, aes(x = i, y = top, label = lab), vjust = -0.6,
-              family = plot_font, size = 3.8, fontface = "bold", colour = pal$text) +
+              family = plot_font, size = 5.2, fontface = "bold", colour = pal$text) +
     scale_fill_manual(values = c("Total" = "#3D3D3D", "Increase" = pal$primary,
                                  "Decrease" = pal$muted)) +
     scale_x_continuous(breaks = seq_len(n),
@@ -104,14 +104,14 @@ plot_nim <- function() {
   ggplot(d, aes(x = comp, y = bps)) +
     geom_hline(yintercept = 0, colour = pal$muted, linewidth = 0.4) +
     geom_col(fill = pal$primary, width = 0.55) +
-    geom_text(aes(label = lab), vjust = 1.5, family = plot_font, size = 3.8,
+    geom_text(aes(label = lab), vjust = 1.5, family = plot_font, size = 5.2,
               fontface = "bold", colour = pal$text) +
     facet_wrap(~panel, scales = "free_x") +
     scale_x_discrete(position = "top") +
     scale_y_continuous(expand = expansion(mult = c(0.25, 0.05))) +
     labs(x = NULL, y = "Change in net interest margin (basis points)") +
     theme_axis() +
-    theme(strip.text = element_text(colour = pal$maroon, face = "bold", hjust = 0, size = 11),
+    theme(strip.text = element_text(colour = pal$maroon, face = "bold", hjust = 0, size = 15),
           panel.grid.major.y = element_blank(),
           axis.text.y = element_blank())
 }
@@ -146,7 +146,7 @@ plot_seg <- function() {
     geom_hline(yintercept = 0, colour = pal$muted, linewidth = 0.4) +
     geom_col(position = dodge, width = 0.72) +
     geom_text(aes(label = lab, vjust = ifelse(val >= 0, -0.5, 1.4)),
-              position = dodge, family = plot_font, size = 3.2, colour = pal$text) +
+              position = dodge, family = plot_font, size = 4.4, colour = pal$text) +
     scale_fill_manual(values = setNames(c(pal$rose, pal$muted, pal$primary), meas)) +
     scale_y_continuous(labels = comma, expand = expansion(mult = c(0.12, 0.12))) +
     labs(x = NULL, y = paste0("Change, Q1 FY26 to Q1 FY27 (", inr, " crore)")) +
