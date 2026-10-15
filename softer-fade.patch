@@ -1,0 +1,36 @@
+diff --git a/app.R b/app.R
+index a8f1208..90e8253 100644
+--- a/app.R
++++ b/app.R
+@@ -432,20 +432,24 @@ ratio_card <- function(name, value, change, what, says) {
+ 
+ # ---- Scroll fade JS ----
+ # Every element with class "fade-item" is fully visible when its centre is at
+-# the middle of the screen, and fades out (with a small upward/downward drift)
+-# as it moves away. Result: older content fades out, newer content fades in.
++# the middle of the screen. Content arriving from below fades in over a short
++# distance (quick); content leaving through the top fades out over a longer
++# distance and never drops below MIN_OPACITY (gentle). Both drift a little.
+ scroll_js <- "
+ (function () {
+-  var FADE_RANGE = 0.55;   // fraction of screen height over which fade happens (smaller = faster)
+-  var DRIFT_PX   = 40;     // max vertical drift in pixels
++  var FADE_IN_RANGE  = 0.8;   // screen heights over which content fades IN  (bigger = quicker to appear)
++  var FADE_OUT_RANGE = 1.0;   // screen heights over which content fades OUT (bigger = slower to vanish)
++  var MIN_OPACITY    = 0.2;   // faintest an element gets (0 = fully invisible)
++  var DRIFT_PX       = 40;    // max vertical drift in pixels
+ 
+   function update() {
+     var vh = window.innerHeight;
+     document.querySelectorAll('.fade-item').forEach(function (el) {
+       var r = el.getBoundingClientRect();
+-      var offset = (r.top + r.height / 2) - vh / 2;       // + below centre, - above
+-      var t = Math.min(Math.abs(offset) / (vh * FADE_RANGE), 1);
+-      var eased = 1 - t * t;                               // gentle ease
++      var offset = (r.top + r.height / 2) - vh / 2;       // + below centre (arriving), - above (leaving)
++      var range = offset > 0 ? FADE_IN_RANGE : FADE_OUT_RANGE;
++      var t = Math.min(Math.abs(offset) / (vh * range), 1);
++      var eased = MIN_OPACITY + (1 - MIN_OPACITY) * (1 - t * t);   // gentle ease
+       el.style.opacity = eased;
+       el.style.transform = 'translateY(' + (Math.sign(offset) * t * DRIFT_PX) + 'px)';
+     });
