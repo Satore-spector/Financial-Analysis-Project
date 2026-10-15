@@ -8,7 +8,8 @@
 #   ├── modules/
 #   │   ├── eda.R            <- EDA charts + carousel
 #   │   ├── bridge.R         <- profit bridge
-#   │   └── drivers_kpis.R   <- driver breakdown + 8 KPIs
+#   │   ├── drivers_kpis.R   <- driver breakdown + 8 KPIs
+#   │   └── segment_matrix.R <- segment comparison heat map
 #   └── Assets/
 #       ├── imgs/axis_logo.png
 #       └── Data/extracted_data/*.csv
@@ -33,6 +34,7 @@ data_dir <- file.path(app_dir, "Assets", "Data", "extracted_data")
 source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
 source(file.path(app_dir, "modules", "bridge.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "drivers_kpis.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
+source(file.path(app_dir, "modules", "segment_matrix.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 
 # ---- Axis Bank palette (edit here, applies everywhere) ----
 axis_colors <- list(
@@ -447,6 +449,7 @@ ui <- fluidPage(
     tags$style(HTML(carousel_css)),
     tags$style(HTML(bridge_css)),
     tags$style(HTML(dk_css)),
+    tags$style(HTML(sm_css)),
     tags$script(HTML(scroll_js)),
     tags$script(HTML(carousel_js))
   ),
@@ -599,6 +602,11 @@ ui <- fluidPage(
   # ======================= SECTION 6: EIGHT KPIs =======================
   div(class = "dash-section",
     kpis_ui()
+  ),
+
+  # ======================= SECTION 7: SEGMENT COMPARISON MATRIX =======================
+  div(class = "dash-section",
+    segment_matrix_ui()
   )
 )
 
@@ -607,6 +615,7 @@ server <- function(input, output, session) {
   eda_server(output)
   bridge_server(output)
   drivers_kpis_server(output)
+  segment_matrix_server(output)
 }
 
 shinyApp(ui, server)
