@@ -170,10 +170,10 @@ html, body {
 }
 .stat-card {
   background: var(--axis-white);
-  border-left: 5px solid var(--axis-burgundy);
-  border-radius: 8px;
-  padding: 20px 22px;
-  box-shadow: 0 2px 10px rgba(107, 14, 55, 0.08);
+  border: 1px solid #EADDE3;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.07);
+  padding: 24px 28px;
 }
 .stat-value {
   font-size: 1.9rem;
@@ -190,13 +190,34 @@ html, body {
   margin-top: 6px;
   line-height: 1.5;
 }
-.stat-card.warn { border-left-color: #C0392B; }
+.stat-card.warn { border-color: #E8B4AE; }
 .stat-card.warn .stat-value { color: #C0392B; }
+
+/* Long stacked rows: value | label | note */
+.stat-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1400px;
+}
+.stat-stack .stat-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(200px, 1fr) minmax(240px, 1.6fr);
+  align-items: center;
+  column-gap: 32px;
+  padding: 22px 36px;
+}
+.stat-stack .stat-value { font-size: 1.7rem; }
+.stat-stack .stat-label { margin-top: 0; font-size: 1.05rem; }
+.stat-stack .stat-note  { margin-top: 0; font-size: 0.9rem; }
+@media (max-width: 900px) {
+  .stat-stack .stat-card { grid-template-columns: 1fr; row-gap: 4px; }
+}
 
 .callout {
   background: var(--axis-burgundy);
   color: var(--axis-white);
-  border-radius: 10px;
+  border-radius: 22px;
   padding: 28px 32px;
   margin-top: 24px;
   line-height: 1.8;
@@ -212,10 +233,10 @@ html, body {
 }
 .product-card {
   background: var(--axis-white);
-  border-top: 5px solid var(--axis-burgundy);
-  border-radius: 8px;
-  padding: 20px 22px;
-  box-shadow: 0 2px 10px rgba(107, 14, 55, 0.08);
+  border: 1px solid #EADDE3;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.07);
+  padding: 24px 28px;
 }
 .product-card h4 { color: var(--axis-burgundy); font-weight: 700; margin: 0 0 10px 0; }
 .product-card ul { padding-left: 18px; margin: 0; line-height: 1.7; font-size: 0.9rem; }
@@ -227,10 +248,10 @@ html, body {
 }
 .ratio-card {
   background: var(--axis-white);
-  border-top: 5px solid var(--axis-burgundy);
-  border-radius: 8px;
-  padding: 22px 24px;
-  box-shadow: 0 2px 10px rgba(107, 14, 55, 0.08);
+  border: 1px solid #EADDE3;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.07);
+  padding: 26px 30px;
 }
 .ratio-card h4 { color: var(--axis-maroon); font-weight: 700; margin: 0 0 4px 0; }
 .ratio-card .stat-value { margin-bottom: 2px; }
@@ -252,7 +273,7 @@ html, body {
 # ---- Carousel CSS + JS ----
 carousel_css <- "
 .carousel { width: 100%; }
-.carousel-viewport { overflow: hidden; border-radius: 12px; }
+.carousel-viewport { overflow: hidden; border-radius: 24px; }
 .carousel-track {
   display: flex;
   transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -261,10 +282,10 @@ carousel_css <- "
 .carousel-slide { flex: 0 0 100%; min-width: 0; box-sizing: border-box; padding: 4px; }
 .slide-card {
   background: #FFFFFF;
-  border-top: 5px solid var(--axis-burgundy);
-  border-radius: 10px;
+  border: 1px solid #EADDE3;
+  border-radius: 22px;
   padding: 22px 28px 18px 28px;
-  box-shadow: 0 2px 14px rgba(107, 14, 55, 0.10);
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.07);
 }
 .slide-title {
   margin: 0 0 8px 0;
@@ -483,7 +504,7 @@ ui <- fluidPage(
     div(class = "fade-item",
       h3(class = "sub-heading", "Market snapshot"),
       p(class = "sub-note", "Axis Bank is part of the Nifty 50. Figures as at the end of the June 2026 quarter."),
-      div(class = "stat-grid",
+      div(class = "stat-stack",
         stat_card("\u20B91,328", "Share price on NSE", "Just before results"),
         stat_card("~15.7x", "Price to earnings", "HDFC Bank 16.6x \u00B7 ICICI Bank 19.1x \u00B7 Kotak Bank 20.1x"),
         stat_card("~2.0x", "Price to book value"),
@@ -499,7 +520,7 @@ ui <- fluidPage(
     div(class = "fade-item",
       h3(class = "sub-heading", "Q1 FY27 performance"),
       p(class = "sub-note", "Profit has risen steadily, but margins are under strain."),
-      div(class = "stat-grid",
+      div(class = "stat-stack",
         stat_card("\u20B97,114 cr", "Standalone net profit", "Up 23% from \u20B95,806 cr a year ago"),
         stat_card("\u20B914,646 cr", "Net interest income", "Up 8%"),
         stat_card("\u20B911,122 cr", "Core operating profit", "Up 10%"),
@@ -628,3 +649,4 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
+

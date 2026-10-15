@@ -1,0 +1,50 @@
+diff --git a/app.R b/app.R
+index 2f3f5ea..21f58b7 100644
+--- a/app.R
++++ b/app.R
+@@ -193,6 +193,27 @@ html, body {
+ .stat-card.warn { border-color: #E8B4AE; }
+ .stat-card.warn .stat-value { color: #C0392B; }
+ 
++/* Long stacked rows: value | label | note */
++.stat-stack {
++  display: flex;
++  flex-direction: column;
++  gap: 16px;
++  max-width: 1400px;
++}
++.stat-stack .stat-card {
++  display: grid;
++  grid-template-columns: minmax(180px, 0.8fr) minmax(200px, 1fr) minmax(240px, 1.6fr);
++  align-items: center;
++  column-gap: 32px;
++  padding: 22px 36px;
++}
++.stat-stack .stat-value { font-size: 1.7rem; }
++.stat-stack .stat-label { margin-top: 0; font-size: 1.05rem; }
++.stat-stack .stat-note  { margin-top: 0; font-size: 0.9rem; }
++@media (max-width: 900px) {
++  .stat-stack .stat-card { grid-template-columns: 1fr; row-gap: 4px; }
++}
++
+ .callout {
+   background: var(--axis-burgundy);
+   color: var(--axis-white);
+@@ -483,7 +504,7 @@ ui <- fluidPage(
+     div(class = "fade-item",
+       h3(class = "sub-heading", "Market snapshot"),
+       p(class = "sub-note", "Axis Bank is part of the Nifty 50. Figures as at the end of the June 2026 quarter."),
+-      div(class = "stat-grid",
++      div(class = "stat-stack",
+         stat_card("\u20B91,328", "Share price on NSE", "Just before results"),
+         stat_card("~15.7x", "Price to earnings", "HDFC Bank 16.6x \u00B7 ICICI Bank 19.1x \u00B7 Kotak Bank 20.1x"),
+         stat_card("~2.0x", "Price to book value"),
+@@ -499,7 +520,7 @@ ui <- fluidPage(
+     div(class = "fade-item",
+       h3(class = "sub-heading", "Q1 FY27 performance"),
+       p(class = "sub-note", "Profit has risen steadily, but margins are under strain."),
+-      div(class = "stat-grid",
++      div(class = "stat-stack",
+         stat_card("\u20B97,114 cr", "Standalone net profit", "Up 23% from \u20B95,806 cr a year ago"),
+         stat_card("\u20B914,646 cr", "Net interest income", "Up 8%"),
+         stat_card("\u20B911,122 cr", "Core operating profit", "Up 10%"),

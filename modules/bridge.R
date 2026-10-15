@@ -173,9 +173,9 @@ bridge_css <- "
   width: 100%;
   border-collapse: collapse;
   background: #FFFFFF;
-  border-radius: 10px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(107, 14, 55, 0.08);
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.07);
   font-size: 0.9rem;
 }
 .bridge-table th {
