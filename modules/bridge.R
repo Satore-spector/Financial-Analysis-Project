@@ -5,8 +5,6 @@
 # Data: "1. PBT bridge" rows of devashish-Driver Breakdown.csv
 # ==========================================================
 
-library(echarts4r)
-
 minus <- "\u2212"
 
 # ---- Data ----
@@ -72,117 +70,18 @@ plot_bridge <- function() {
 }
 
 # ---- Animated chart (echarts4r) ----
-# Same waterfall as plot_bridge() above, drawn with echarts. Bars grow in one
-# after another; hover for the exact figure. The options are passed straight
-# to echarts through e_list(), so every setting below is a normal echarts option.
+# Same waterfall as plot_bridge() above; the drawing code is shared in
+# modules/echarts_helpers.R. Bars grow in one after another; hover for the figure.
 plot_bridge_echarts <- function() {
-  top <- pmax(b_from, b_to)
-  bot <- pmin(b_from, b_to)
-  kind <- ifelse(b_total, "total", ifelse(b_val >= 0, "up", "down"))
-
-  # floating bars: an invisible base, then a visible step stacked on it
-  base   <- ifelse(b_total, 0, bot)
-  height <- ifelse(b_total, b_val, top - bot)
-  labs <- ifelse(b_total, comma(b_val, accuracy = 1),
-                 paste0(ifelse(b_val >= 0, "+", minus), comma(abs(b_val), accuracy = 1)))
-
-  lo <- floor(min(bot[!b_total]) * 0.8 / 1000) * 1000
-  hi <- ceiling(max(top) * 1.04 / 500) * 500
-
-  col_total <- "#3D3D3D"
-  mono <- "Roboto Mono, monospace"
-
-  step_series <- function(name, k, colour) {
-    list(name = name, type = "bar", stack = "wf", barWidth = "68%",
-         data = as.list(ifelse(kind == k, height, 0)),
-         itemStyle = list(color = colour, borderRadius = c(6, 6, 0, 0)),
-         emphasis = list(disabled = TRUE))
-  }
-
-  # dotted connectors: from the end of one bar to the start of the next
-  connectors <- lapply(seq_len(b_n - 1), function(k) {
-    list(list(coord = c(k - 1 + 0.34, b_to[k])),
-         list(coord = c(k - 0.34,     b_to[k])))
-  })
-
-  names_json <- jsonlite::toJSON(unname(bridge_table_labels[bridge_raw$driver]), auto_unbox = FALSE)
-  labs_json  <- jsonlite::toJSON(labs, auto_unbox = FALSE)
-
-  opt <- list(
-    animation = TRUE,
-    animationDuration = 1100,
-    animationEasing = "cubicOut",
-    animationDelay = htmlwidgets::JS("function (idx) { return idx * 160; }"),
-    textStyle = list(fontFamily = mono, color = pal$text),
-    grid = list(left = 70, right = 24, top = 56, bottom = 8, containLabel = TRUE),
-    tooltip = list(
-      trigger = "axis", axisPointer = list(type = "none"),
-      backgroundColor = "#FFFFFF", borderColor = pal$grid, borderWidth = 1,
-      padding = c(10, 14),
-      textStyle = list(fontFamily = mono, fontSize = 16, color = pal$text),
-      formatter = htmlwidgets::JS(sprintf(
-        "function (p) { var n = %s, l = %s, i = p[0].dataIndex; return '<b>' + n[i] + '</b><br/>' + l[i] + ' cr'; }",
-        names_json, labs_json))
-    ),
-    xAxis = list(
-      type = "category",
-      data = as.list(unname(bridge_axis_labels[bridge_raw$driver])),
-      axisTick = list(show = FALSE),
-      axisLine = list(lineStyle = list(color = pal$grid)),
-      axisLabel = list(interval = 0, fontSize = 17, lineHeight = 24, color = pal$text)
-    ),
-    yAxis = list(
-      type = "value", min = lo, max = hi,
-      name = paste0("Profit before tax (", inr, " crore)"),
-      nameLocation = "middle", nameGap = 78,
-      nameTextStyle = list(fontSize = 17, fontWeight = "bold", color = pal$maroon),
-      axisLabel = list(fontSize = 16, color = pal$text,
-                       formatter = htmlwidgets::JS("function (v) { return v.toLocaleString('en-US'); }")),
-      splitLine = list(lineStyle = list(color = pal$grid))
-    ),
-    series = list(
-      # invisible base that lifts each floating bar to where the last one ended
-      list(name = "base", type = "bar", stack = "wf", barWidth = "68%",
-           data = as.list(base), silent = TRUE,
-           itemStyle = list(color = "transparent"), emphasis = list(disabled = TRUE)),
-      step_series("Total", "total", col_total),
-      step_series("Adds to profit", "up", pal$primary),
-      step_series("Reduces profit", "down", pal$muted),
-      # invisible line that carries the value labels and the dotted connectors
-      list(name = "labels", type = "line", data = as.list(top), symbol = "circle", symbolSize = 0,
-           silent = TRUE, lineStyle = list(width = 0), z = 5,
-           label = list(show = TRUE, position = "top", distance = 8, fontSize = 20,
-                        fontWeight = "bold", color = pal$text,
-                        formatter = htmlwidgets::JS(sprintf(
-                          "function (p) { return %s[p.dataIndex]; }", labs_json))),
-           markLine = list(silent = TRUE, symbol = "none", animation = FALSE,
-                           lineStyle = list(type = "dotted", color = pal$muted, width = 1.5),
-                           label = list(show = FALSE), data = connectors))
-    )
+  ec_waterfall(
+    vals      = b_val,
+    is_total  = b_total,
+    x_labels  = bridge_axis_labels[bridge_raw$driver],
+    tip_names = bridge_table_labels[bridge_raw$driver],
+    y_title   = paste0("Profit before tax (", inr, " crore)"),
+    lo_mult = 0.8, hi_mult = 1.04
   )
-  e_list(e_charts(), opt)
 }
-
-# Replays the chart's animation each time it scrolls into view.
-# Wrap an echarts4rOutput() in div(class = "replay-chart", ...) to use it.
-replay_js <- "
-document.addEventListener('DOMContentLoaded', function () {
-  if (!('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var el = e.target.querySelector('.echarts4r');
-      if (!el || typeof echarts === 'undefined') return;
-      var inst = echarts.getInstanceByDom(el);
-      if (!inst) return;
-      var opt = inst.getOption();
-      inst.clear();
-      inst.setOption(opt);
-    });
-  }, { threshold: 0.6 });
-  document.querySelectorAll('.replay-chart').forEach(function (w) { io.observe(w); });
-});
-"
 
 # ---- Figures used in the cards and notes (all computed from the CSV) ----
 bridge_stats <- local({

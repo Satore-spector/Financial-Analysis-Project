@@ -33,6 +33,7 @@ addResourcePath("imgs", file.path(app_dir, "Assets", "imgs"))
 # ---- Data + EDA module ----
 data_dir <- file.path(app_dir, "Assets", "Data", "extracted_data")
 source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
+source(file.path(app_dir, "modules", "echarts_helpers.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "bridge.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "drivers_kpis.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "segment_matrix.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R

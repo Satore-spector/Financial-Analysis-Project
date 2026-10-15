@@ -154,6 +154,115 @@ plot_seg <- function() {
 }
 
 # ---------------------------------------------------------
+# Animated versions (echarts4r). Drawing helpers live in modules/echarts_helpers.R.
+# The ggplot functions above are kept for reference but are no longer shown.
+# ---------------------------------------------------------
+plot_nii_echarts <- function() {
+  ec_waterfall(
+    vals      = c(nii_start, nii_steps, nii_end),
+    is_total  = c(TRUE, rep(FALSE, length(nii_steps)), TRUE),
+    x_labels  = c("NII\nQ1 FY26", nii_labels, "NII\nQ1 FY27"),
+    tip_names = gsub("\n", " ", c("Net interest income, Q1 FY26", nii_labels, "Net interest income, Q1 FY27")),
+    y_title   = paste0("Net interest income (", inr, " crore)"),
+    lo_mult = 0.85, hi_mult = 1.06,
+    legend_names = c("Total", "Increase", "Decrease")
+  )
+}
+
+# NIM bridge: two panels side by side (year on year, quarter on quarter).
+# Drawn as one axis with a blank gap between the two groups, so both panels
+# share the same zero line and scale.
+plot_nim_echarts <- function() {
+  p1 <- sprintf("Versus a year ago (total %s%d bps)", dk_minus, abs(nim_tot_yoy))
+  p2 <- sprintf("Versus last quarter (total %s%d bps)", dk_minus, abs(nim_tot_qoq))
+  n1 <- length(nim_yoy_labels); n2 <- length(nim_qoq_labels)
+  cats <- c(nim_yoy_labels, " ", nim_qoq_labels)
+  vals <- c(nim_yoy$Q1FY27, NA, nim_qoq$Q1FY27)
+  rng  <- range(c(vals, 0), na.rm = TRUE)
+  ymin <- if (rng[1] < 0) rng[1] * 1.4 else 0
+  ymax <- if (rng[2] > 0) rng[2] * 1.4 else 0
+
+  item <- function(v) if (is.na(v)) "-" else
+    list(value = v, label = list(position = if (v >= 0) "top" else "bottom"))
+
+  title_style <- list(color = pal$maroon, fontWeight = "bold", fontSize = 18, fontFamily = ec_mono)
+  # echarts only takes px or % for positions, so the second title is placed as a
+  # percentage (the plot spans 20px .. width - 20px; worked out for a ~1200px-wide card)
+  second_left <- sprintf("%.1f%%", (20 + 1160 * (n1 + 1) / (n1 + n2 + 1)) / 1200 * 100)
+  titles <- list(
+    list(text = p1, left = 20, top = 0, textStyle = title_style),
+    list(text = p2, left = second_left, top = 0, textStyle = title_style))
+
+  opt <- c(ec_motion(), list(
+    title = titles,
+    grid  = list(left = 20, right = 20, top = 120, bottom = 10),
+    tooltip = ec_tooltip("item", sprintf(
+      "function (p) { var v = Number(p.value); return '<b>' + String(p.name).replace(/\\n/g, ' ') + '</b><br/>' + (v >= 0 ? '+' : '%s') + Math.abs(v) + ' bps'; }",
+      dk_minus)),
+    xAxis = list(type = "category", position = "top", data = as.list(cats),
+                 axisTick = list(show = FALSE),
+                 axisLine = list(lineStyle = list(color = pal$muted)),
+                 axisLabel = list(interval = 0, fontSize = 17, lineHeight = 24,
+                                  color = pal$text, margin = 14)),
+    # no axis title here: a rotated axis name on a hidden axis shrinks the plot area in echarts.
+    # The unit is on every label ("bps") and in the note under the chart.
+    yAxis = list(type = "value", min = ymin, max = ymax,
+                 axisLabel = list(show = FALSE), axisLine = list(show = FALSE),
+                 axisTick = list(show = FALSE), splitLine = list(show = FALSE)),
+    series = list(list(
+      name = "NIM change", type = "bar", barWidth = "55%",
+      data = lapply(vals, item),
+      itemStyle = list(color = pal$primary, borderRadius = c(0, 0, 6, 6)),
+      emphasis = list(disabled = TRUE),
+      label = list(show = TRUE, fontSize = 20, fontWeight = "bold", color = pal$text, distance = 8,
+                   formatter = ec_js(sprintf("function (p) { var v = Number(p.value); return (v >= 0 ? '+' : '%s') + Math.abs(v) + ' bps'; }", dk_minus)))
+    ))
+  ))
+  e_list(e_charts(), opt)
+}
+
+# Segment bridge: revenue, cost and profit change per segment (grouped bars)
+plot_seg_echarts <- function() {
+  meas <- c("Revenue change", "Cost change (negative = costs rose)", "Profit before tax change")
+  cols <- c(pal$rose, pal$muted, pal$primary)
+  vals <- list(seg_tab$rev, seg_tab$cost, seg_tab$pbt)
+  item <- function(v) list(value = v,
+    label = list(position = if (v >= 0) "top" else "bottom"))
+
+  series <- lapply(1:3, function(k) list(
+    name = meas[k], type = "bar", barCategoryGap = "28%", barGap = "6%",
+    data = lapply(vals[[k]], item),
+    itemStyle = list(color = cols[k], borderRadius = c(5, 5, 0, 0)),
+    markLine = if (k == 1) list(silent = TRUE, symbol = "none", animation = FALSE,
+                                lineStyle = list(color = pal$muted, width = 1.2, type = "solid"),
+                                label = list(show = FALSE), data = list(list(yAxis = 0))),
+    emphasis = list(disabled = TRUE),
+    label = list(show = TRUE, fontSize = 15, color = pal$text, distance = 6,
+                 formatter = ec_js(sprintf("function (p) { var v = Number(p.value); return (v >= 0 ? '+' : '%s') + Math.abs(Math.round(v)).toLocaleString('en-US'); }", dk_minus)))
+  ))
+
+  opt <- c(ec_motion(), list(
+    legend  = ec_legend(meas),
+    # extra headroom: the three long legend entries can wrap onto a second line on narrow screens
+    grid    = list(left = 70, right = 24, top = 104, bottom = 8, containLabel = TRUE),
+    tooltip = ec_tooltip("axis", ec_tip_signed(" cr")),
+    xAxis = list(type = "category", data = as.list(seg_axis),
+                 axisTick = list(show = FALSE),
+                 # onZero = FALSE keeps the category names at the bottom of the plot;
+                 # the zero line is drawn separately (markLine on the first series)
+                 axisLine = list(onZero = FALSE, lineStyle = list(color = pal$grid)),
+                 axisLabel = list(interval = 0, fontSize = 17, lineHeight = 24, color = pal$text)),
+    yAxis = c(list(type = "value", boundaryGap = c("12%", "12%"),
+                   axisLabel = list(fontSize = 16, color = pal$text,
+                                    formatter = ec_js("function (v) { return v.toLocaleString('en-US'); }")),
+                   splitLine = list(lineStyle = list(color = pal$grid))),
+              ec_value_axis_title(paste0("Change, Q1 FY26 to Q1 FY27 (", inr, " crore)"), gap = 78)),
+    series = series
+  ))
+  e_list(e_charts(), opt)
+}
+
+# ---------------------------------------------------------
 # Eight KPIs, read from Ratios.csv (edit this table to swap KPIs)
 #   good = "up": a rise is favourable, "down": a fall is favourable,
 #   "none": no judgement (card is never red)
@@ -233,7 +342,7 @@ drivers_ui <- function() {
         "The profit bridge showed what moved profit. The drivers show why. Net interest income, the bank's largest income line, is split into the effect of a bigger balance sheet (volume) and the effect of changing interest rates (rate)."),
       div(class = "slide-card",
         h3(class = "slide-title", "Net interest income: volume versus rate, Q1 FY26 to Q1 FY27"),
-        plotOutput("drv_nii_plot", height = "50vh"),
+        div(class = "replay-chart", echarts4rOutput("drv_nii_plot", height = "50vh")),
         p(class = "drv-note",
           "Volume effect is last year's interest multiplied by the growth in loans or funding. Rate effect is what is left over. Both use period-end balances, so they are approximations.")
       )
@@ -254,7 +363,7 @@ drivers_ui <- function() {
       ),
       div(class = "slide-card", style = "margin-top: 24px;",
         h3(class = "slide-title", "Net interest margin: why it narrowed (management's bridge)"),
-        plotOutput("drv_nim_plot", height = "46vh"),
+        div(class = "replay-chart", echarts4rOutput("drv_nim_plot", height = "46vh")),
         p(class = "drv-note",
           sprintf("Figures are from the CFO on the earnings call, in basis points (100 bps = 1 percentage point). The year-on-year parts add to %s%d bps against a reported %s%d bps, a rounding gap of 1 bp.",
                   dk_minus, abs(tot_comp), dk_minus, abs(nim_tot_yoy)))
@@ -268,7 +377,7 @@ drivers_ui <- function() {
         "Revenue change minus the change in all costs gives the change in profit for each segment. Costs combine internal funding charges, operating expenses and provisions, which the bank does not split by segment."),
       div(class = "slide-card",
         h3(class = "slide-title", "Where the profit growth came from, by segment"),
-        plotOutput("drv_seg_plot", height = "50vh")
+        div(class = "replay-chart", echarts4rOutput("drv_seg_plot", height = "50vh"))
       ),
       div(class = "stat-grid", style = "margin-top: 24px;",
         stat_card(dk_signed(retail$pbt, inr, " cr"), "Retail Banking", seg_note(1)),
@@ -329,7 +438,7 @@ dk_css <- "
 
 # ---- Server hook: call drivers_kpis_server(output) inside server() ----
 drivers_kpis_server <- function(output) {
-  output$drv_nii_plot <- renderPlot(plot_nii(), res = 96, bg = "white")
-  output$drv_nim_plot <- renderPlot(plot_nim(), res = 96, bg = "white")
-  output$drv_seg_plot <- renderPlot(plot_seg(), res = 96, bg = "white")
+  output$drv_nii_plot <- renderEcharts4r(plot_nii_echarts())
+  output$drv_nim_plot <- renderEcharts4r(plot_nim_echarts())
+  output$drv_seg_plot <- renderEcharts4r(plot_seg_echarts())
 }
