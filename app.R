@@ -105,6 +105,28 @@ html, body {
   text-align: center;
 }
 
+/* Group members under the title */
+.hero-team {
+  margin-top: 40px;
+  font-size: 0.8rem;
+}
+.hero-team-label {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.95;
+}
+.hero-team-grid {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  column-gap: 20px;
+  row-gap: 4px;
+  line-height: 1.5;
+}
+.hero-team-grid .roll { text-align: right; opacity: 0.75; }
+.hero-team-grid .name { text-align: left; font-weight: 500; }
+
 /* ---------- CONTENT SECTIONS ---------- */
 .dash-section {
   min-height: 100vh;
@@ -471,12 +493,93 @@ scroll_js <- "
 })();
 "
 
+# ---- News headline marquee ----
+# A continuous right-to-left slider of newspaper screenshots. Drop image files
+# (png, jpg, webp, gif) into Assets/imgs/news/ and they appear automatically,
+# in alphabetical order, so name them 01_..., 02_... to control the order.
+# With no images in the folder, placeholder cards are shown instead.
+news_dir   <- file.path(app_dir, "Assets", "imgs", "news")
+news_files <- sort(list.files(news_dir, pattern = "\\.(png|jpe?g|webp|gif)$", ignore.case = TRUE))
+
+news_css <- "
+.news-marquee {
+  overflow: hidden;
+  padding: 14px 0 22px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.news-track {
+  display: flex;
+  width: max-content;
+  animation: newsScroll var(--news-dur, 60s) linear infinite;
+}
+.news-marquee:hover .news-track { animation-play-state: paused; }   /* pause while the mouse is over it */
+.news-half { display: flex; flex: 0 0 auto; }
+.news-item { flex: 0 0 auto; margin-right: 32px; }
+.news-item img {
+  display: block;
+  height: 30vh;              /* image height; width follows each screenshot's shape */
+  width: auto;
+  background: #FFFFFF;
+  border: 1px solid #EADDE3;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(107, 14, 55, 0.12);
+}
+.news-ph {
+  height: 30vh;
+  width: 42vh;
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--axis-burgundy);
+  border: 2px dashed var(--axis-burgundy);
+  border-radius: 12px;
+  opacity: 0.6;
+}
+@keyframes newsScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }   /* one full set, so the loop has no visible jump */
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-track { animation: none; }
+  .news-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}
+"
+
+# secs_per_item sets the speed: bigger = slower
+news_marquee_ui <- function(files = news_files, secs_per_item = 6) {
+  items <- if (length(files) > 0) {
+    lapply(files, function(f)
+      div(class = "news-item",
+          img(src = paste0("imgs/news/", utils::URLencode(f, reserved = TRUE)),
+              alt = tools::file_path_sans_ext(f))))
+  } else {
+    lapply(1:6, function(i)
+      div(class = "news-item",
+          div(class = "news-ph", paste0("Headline screenshot ", i, " (add images to Assets/imgs/news/)"))))
+  }
+  # repeat short lists so one set is wider than the screen, then show the set twice
+  one_set <- rep(items, max(1, ceiling(8 / length(items))))
+  div(class = "news-marquee",
+    div(class = "news-track", style = sprintf("--news-dur:%ds;", length(one_set) * secs_per_item),
+      div(class = "news-half", one_set),
+      div(class = "news-half", `aria-hidden` = "true", one_set)
+    )
+  )
+}
+
 # ---- UI (no navbar: a plain fluidPage, one continuous scroll) ----
 ui <- fluidPage(
   title = "Axis Bank | Customer Segment Profitability",
   tags$head(
     tags$style(HTML(app_css)),
     tags$style(HTML(carousel_css)),
+    tags$style(HTML(news_css)),
     tags$style(HTML(bridge_css)),
     tags$script(HTML(replay_js)),
     tags$style(HTML(dk_css)),
@@ -491,7 +594,19 @@ ui <- fluidPage(
     div(class = "fade-item",
       img(src = "imgs/axis_logo.png", class = "hero-logo", alt = "Axis Bank logo"),
       h1(class = "hero-title",
-         "Customer Segment Profitability analysis based on loan given, credit given, and CASA deposit")
+         "Customer Segment Profitability analysis based on loan given, credit given, and CASA deposit"),
+      div(class = "hero-team",
+        div(class = "hero-team-label", "Group 4"),
+        div(class = "hero-team-grid",
+          # edit here to change names / roll numbers
+          lapply(list(c("25060242153", "Teerth"),
+                      c("25060242127", "Sherin"),
+                      c("25060242061", "Devashish"),
+                      c("25060242025", "Aparna"),
+                      c("25060242136", "Smitashree")),
+                 function(m) tagList(span(class = "roll", m[1]), span(class = "name", m[2])))
+        )
+      )
     )
   ),
 
@@ -505,6 +620,13 @@ ui <- fluidPage(
         "Axis Bank was established in 1993 as UTI Bank and is now the third largest private sector bank in India, after HDFC Bank and ICICI Bank. It has the third largest branch network among private banks and operates internationally from DIFC (Dubai), Singapore and GIFT City."),
       p(class = "body-text",
         "In 2023 it acquired Citibank India's consumer business, its biggest strategic acquisition in recent years. The deal brought in affluent customers and a strong credit card base, which helps explain Axis's position in credit cards today.")
+    ),
+
+    # 1a-2. News headlines (sliding carousel; screenshots go in Assets/imgs/news/)
+    div(class = "fade-item",
+      h3(class = "sub-heading", "In the news"),
+      p(class = "sub-note", "Recent press coverage of Axis Bank."),
+      news_marquee_ui()
     ),
 
     # 1b. Market snapshot

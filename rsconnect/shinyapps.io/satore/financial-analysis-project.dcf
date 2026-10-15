@@ -5,6 +5,6 @@ account: satore
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 18183040
-bundleId: 12692209
+bundleId: 12692541
 url: https://satore.shinyapps.io/financial-analysis-project/
 version: 1
