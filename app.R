@@ -473,6 +473,7 @@ ui <- fluidPage(
     tags$style(HTML(app_css)),
     tags$style(HTML(carousel_css)),
     tags$style(HTML(bridge_css)),
+    tags$script(HTML(replay_js)),
     tags$style(HTML(dk_css)),
     tags$style(HTML(sm_css)),
     tags$script(HTML(scroll_js)),
