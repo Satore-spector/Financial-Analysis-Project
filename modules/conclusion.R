@@ -2,7 +2,7 @@
 # Conclusion module: final section, short interpretation of the project
 # Sourced by app.R AFTER bridge.R, drivers_kpis.R and segment_matrix.R.
 # Every number is read from objects those modules already built from the
-# CSVs (bridge_stats, kpi_data, seg_tab, sm_*), so it stays in sync with
+# CSVs (bridge_stats, ratio_get, seg_tab, sm_*), so it stays in sync with
 # the charts. ASCII only: symbols are \u escapes.
 # ==========================================================
 
@@ -14,7 +14,7 @@ conclusion_ui <- function() {
   prov_share  <- bridge_stats$prov / bridge_stats$chg * 100
   pbt_chg_txt <- paste0(inr, comma(bridge_stats$chg, accuracy = 1))
 
-  k <- function(name) kpi_data[kpi_data$ratio == name, ]
+  k <- function(name) ratio_get(name)
   nim <- k("Net interest margin"); yld <- k("Yield on advances (approx.)")
   cof <- k("Cost of funds (approx.)"); casa <- k("CASA ratio (month-end)")
 

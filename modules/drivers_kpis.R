@@ -1,5 +1,5 @@
 # ==========================================================
-# Drivers + KPIs module: three driver charts and eight KPI cards
+# Drivers + KPIs module: three driver charts and seven KPI cards
 # Sourced by app.R AFTER modules/eda.R (reuses read_axis, pal,
 # theme_axis, plot_font, inr). stat_card() comes from app.R and is
 # only called when the UI is built. ASCII only: symbols are \u escapes.
@@ -263,50 +263,78 @@ plot_seg_echarts <- function() {
 }
 
 # ---------------------------------------------------------
-# Eight KPIs, read from Ratios.csv (edit this table to swap KPIs)
+# Seven KPIs, read from Ratios.csv and 02_loans_and_deposits.csv
+# (edit this table to swap KPIs)
 #   good = "up": a rise is favourable, "down": a fall is favourable,
 #   "none": no judgement (card is never red)
+#   basis = the change line for KPIs that have no prior-year value
 # ---------------------------------------------------------
 ratios <- read_axis("Ratios")
+loans  <- read_axis("02_loans_and_deposits")
+
+# Reported year-on-year growth in advances, by customer segment
+loan_growth <- function(seg) {
+  loans$reported_yoy_growth_pct[loans$category == "Loans" & loans$customer_segment == seg]
+}
 
 kpi_defs <- data.frame(
-  ratio  = c("Net interest margin", "Yield on advances (approx.)", "Cost of funds (approx.)",
-             "Return on equity (annualized)",
-             "CASA ratio (month-end)", "Credit-deposit ratio", "Gross NPA ratio", "Net credit cost"),
-  label  = c("Net interest margin", "Yield on advances", "Cost of funds", "Return on equity",
-             "CASA ratio", "Credit-deposit ratio", "Gross NPA ratio", "Net credit cost"),
-  digits = c(2, 2, 2, 2, 1, 2, 2, 2),
-  good   = c("up", "up", "down", "up", "up", "none", "down", "down"),
-  means  = c("What the bank keeps as a spread on its lending",
-             "Average interest earned on loans (approx.)",
-             "Average interest paid on deposits and borrowings (approx.)",
-             "Profit earned per rupee of shareholder equity",
-             "Share of deposits held in cheap savings and current accounts (month-end)",
-             "Loans given for every rupee of deposits",
-             "Share of loans that have gone bad",
-             "Yearly charge for bad loans, as a share of loans"),
+  ratio  = c("Return on assets (annualized)", "Loan growth (YoY)", "Net interest margin",
+             "Gross slippage ratio (bank)", "Net credit cost",
+             "CASA ratio (month-end)", "Incremental CASA share"),
+  label  = c("Return on assets (ROA)", "Loan growth: Corporate / SME / Retail", "Net interest margin",
+             "Gross slippage ratio", "Net credit cost",
+             "CASA ratio (month-end)", "Incremental CASA share"),
+  digits = c(2, 0, 2, 2, 2, 0, 0),
+  good   = c("up", "none", "up", "down", "down", "up", "up"),
+  means  = c("The whole bank earns slightly more per \u20B9100 of assets",
+             "Growth is mostly corporate lending",
+             "Lending earns less per rupee",
+             "Far fewer loans are turning bad",
+             "Cost of bad loans more than halved",
+             "Share of cheap deposits is falling",
+             "Only 1 in 4 new deposit rupees is CASA"),
+  basis  = c(NA, "Growth in advances, Q1 FY27 over Q1 FY26", NA, NA, NA, NA,
+             "Share of the year's new deposits, Q1 FY27 over Q1 FY26"),
   stringsAsFactors = FALSE
 )
 
 kpi_data <- local({
   r <- ratios[match(kpi_defs$ratio, ratios$ratio), ]
-  stopifnot(!anyNA(r$Q1FY27), !anyNA(r$Q1FY26))
   kpi_defs$now  <- r$Q1FY27
   kpi_defs$prev <- r$Q1FY26
   kpi_defs$chg  <- round(r$Q1FY27 - r$Q1FY26, 2)   # recomputed so it matches the displayed values
+  # Loan growth is three numbers, so it is shown as text
+  kpi_defs$now_txt <- NA_character_
+  lg <- kpi_defs$ratio == "Loan growth (YoY)"
+  kpi_defs$now_txt[lg] <- paste(sprintf("%.0f%%", sapply(c("Corporate", "SME", "Retail"), loan_growth)),
+                                collapse = " / ")
+  # Only these two KPIs have no prior-year value to compare with
+  stopifnot(!anyNA(kpi_defs$now[!lg]), !anyNA(kpi_defs$prev[!(lg | kpi_defs$ratio == "Incremental CASA share")]))
   kpi_defs
 })
 
 kpi_get <- function(name) kpi_data[kpi_data$ratio == name, ]
 
+# A ratio straight from Ratios.csv (value, prior-year value and change), for the
+# text below and the conclusion, including ratios that are not KPI cards
+ratio_get <- function(name) {
+  r <- ratios[match(name, ratios$ratio), ]
+  data.frame(ratio = name, now = r$Q1FY27, prev = r$Q1FY26,
+             chg = round(r$Q1FY27 - r$Q1FY26, 2), stringsAsFactors = FALSE)
+}
+
 kpi_card <- function(k) {
   fmt <- function(x) sprintf(paste0("%.", k$digits, "f%%"), x)
-  moved_bad <- (k$good == "up" && k$chg < 0) || (k$good == "down" && k$chg > 0)
-  change <- sprintf("%s %s points from %s a year ago",
-                    ifelse(k$chg >= 0, "Up", "Down"),
-                    sprintf(paste0("%.", k$digits, "f"), abs(k$chg)), fmt(k$prev))
+  has_prev  <- !is.na(k$prev)
+  moved_bad <- has_prev && ((k$good == "up" && k$chg < 0) || (k$good == "down" && k$chg > 0))
+  change <- if (has_prev) {
+    sprintf("%s %s points from %s a year ago",
+            ifelse(k$chg >= 0, "Up", "Down"),
+            sprintf(paste0("%.", k$digits, "f"), abs(k$chg)), fmt(k$prev))
+  } else k$basis
   div(class = if (moved_bad) "stat-card warn" else "stat-card",
-    div(class = "stat-value", fmt(k$now)),
+    if (!is.na(k$now_txt)) div(class = "stat-value", style = "font-size: 1.6rem; white-space: nowrap;", k$now_txt)
+    else div(class = "stat-value", fmt(k$now)),
     div(class = "stat-label", k$label),
     div(class = "stat-note", change),
     div(class = "stat-note", k$means)
@@ -399,29 +427,29 @@ drivers_ui <- function() {
 }
 
 kpis_ui <- function() {
-  g <- function(n) kpi_get(n)
+  g <- function(n) ratio_get(n)
   nim <- g("Net interest margin"); yld <- g("Yield on advances (approx.)")
-  cof <- g("Cost of funds (approx.)"); roe <- g("Return on equity (annualized)")
+  cof <- g("Cost of funds (approx.)"); roa <- g("Return on assets (annualized)")
   casa <- g("CASA ratio (month-end)"); nccost <- g("Net credit cost")
 
   tagList(
     div(class = "fade-item",
-      h2(class = "section-heading", "Eight KPIs"),
+      h2(class = "section-heading", "Seven KPIs"),
       p(class = "lead",
-        "Eight numbers that summarise how Axis earns, funds itself and manages risk. Each is compared with a year ago. Red means the change is unfavourable for the bank; the credit-deposit ratio is shown without a judgement."),
+        "Seven numbers that summarise how Axis earns, funds itself and manages risk. Each is measured against a year ago. Red means the change is unfavourable for the bank; loan growth is shown without a judgement."),
       h3(class = "sub-heading", "Earning power"),
-      div(class = "stat-grid", kpi_cards(1:4)),
+      div(class = "stat-grid", kpi_cards(1:3)),
       h3(class = "sub-heading", style = "margin-top: 36px;", "Funding and credit risk"),
-      div(class = "stat-grid", kpi_cards(5:8)),
+      div(class = "stat-grid", kpi_cards(4:7)),
       p(class = "drv-note", style = "margin-top: 16px;",
-        "Yield on advances and cost of funds are approximations built from period-end balances, as labelled in the Ratios data. The other six are reported or calculated directly from reported figures.")
+        "The CASA ratio and incremental CASA share come from the reported deposit figures. Incremental CASA share is the change in CASA divided by the change in total deposits over the year, so it has no prior-year value.")
     ),
     div(class = "fade-item",
       div(class = "callout",
         h4("Reading the KPIs together"),
-        p(sprintf("Loan yields fell %.2f points but the cost of funds fell only %.2f, so the margin narrowed by %.2f points to %.2f%%. The CASA ratio also slipped %.1f points to %.1f%%, so the funding base is less cheap than before. Against that, the net credit cost fell %.2f points to %.2f%%, and return on equity still rose %.2f points to %.2f%%. Profit held up because fewer loans went bad, not because the lending spread improved.",
+        p(sprintf("Loan yields fell %.2f points but the cost of funds fell only %.2f, so the margin narrowed by %.2f points to %.2f%%. The CASA ratio also slipped %.1f points to %.1f%%, so the funding base is less cheap than before. Against that, the net credit cost fell %.2f points to %.2f%%, and return on assets still rose %.2f points to %.2f%%. Profit held up because fewer loans went bad, not because the lending spread improved.",
                   abs(yld$chg), abs(cof$chg), abs(nim$chg), nim$now,
-                  abs(casa$chg), casa$now, abs(nccost$chg), nccost$now, roe$chg, roe$now))
+                  abs(casa$chg), casa$now, abs(nccost$chg), nccost$now, roa$chg, roa$now))
       )
     )
   )

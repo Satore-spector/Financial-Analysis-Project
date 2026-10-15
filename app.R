@@ -8,7 +8,7 @@
 #   ├── modules/
 #   │   ├── eda.R            <- EDA charts + carousel
 #   │   ├── bridge.R         <- profit bridge
-#   │   ├── drivers_kpis.R   <- driver breakdown + 8 KPIs
+#   │   ├── drivers_kpis.R   <- driver breakdown + 7 KPIs
 #   │   ├── segment_matrix.R <- segment comparison heat map
 #   │   └── conclusion.R     <- final conclusion
 #   └── Assets/
@@ -700,17 +700,12 @@ ui <- fluidPage(
   # ======================= SECTION 2: READING THE RATIOS =======================
   div(class = "dash-section",
 
-    # 2a. Three ratio cards
+    # 2a. Two ratio cards
     div(class = "fade-item",
       h2(class = "section-heading", "Reading the Ratios"),
       p(class = "lead",
-        "Three ratios show how Axis compares with the return its shareholders demand, and how falling interest rates are hitting income. Yield figures are approximate."),
+        "Two ratios show how falling interest rates are hitting income. Yield figures are approximate."),
       div(class = "ratio-grid",
-        ratio_card(
-          "CAPM (hurdle rate)", "ROE 14.16%", "1.15 percentage points above the hurdle (up from 13.14% a year ago)",
-          "CAPM estimates the return shareholders demand for holding a stock this risky: the risk-free rate plus the stock's beta times the market premium. Think of it as the bank's hurdle rate.",
-          "Axis's return on equity of 14.16% clears it by 1.15 percentage points, so the bank is creating value for its owners rather than just earning a profit. The margin is modest, so a small further fall in profitability would close it."
-        ),
         ratio_card(
           "Yield on advances", "8.41%", "\u25BC 0.80 pt from 9.21% a year ago",
           "The interest the bank earns on its loans, which are its main source of income.",
@@ -728,7 +723,7 @@ ui <- fluidPage(
     div(class = "fade-item",
       div(class = "callout",
         h4("Overall"),
-        p("Axis is a strong third among private banks. It is competitive but not the leader on returns, and it beats its required return by less than we would like. Income is falling on both sides of the balance sheet, loans and investments. Both falls are largely rate-driven, so they show the whole sector's squeeze more than an Axis-specific weakness.")
+        p("Axis is a strong third among private banks. It is competitive but not the leader on returns. Income is falling on both sides of the balance sheet, loans and investments. Both falls are largely rate-driven, so they show the whole sector's squeeze more than an Axis-specific weakness.")
       )
     )
   ),
@@ -753,7 +748,7 @@ ui <- fluidPage(
     drivers_ui()
   ),
 
-  # ======================= SECTION 6: EIGHT KPIs =======================
+  # ======================= SECTION 6: SEVEN KPIs =======================
   div(class = "dash-section",
     kpis_ui()
   ),
