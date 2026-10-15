@@ -6,7 +6,8 @@
 #   Fin_dashboard/
 #   ├── app.R
 #   ├── modules/
-#   │   └── eda.R            <- EDA charts + carousel
+#   │   ├── eda.R            <- EDA charts + carousel
+#   │   └── bridge.R         <- profit bridge
 #   └── Assets/
 #       ├── imgs/axis_logo.png
 #       └── Data/extracted_data/*.csv
@@ -29,6 +30,7 @@ addResourcePath("imgs", file.path(app_dir, "Assets", "imgs"))
 # ---- Data + EDA module ----
 data_dir <- file.path(app_dir, "Assets", "Data", "extracted_data")
 source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
+source(file.path(app_dir, "modules", "bridge.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 
 # ---- Axis Bank palette (edit here, applies everywhere) ----
 axis_colors <- list(
@@ -441,6 +443,7 @@ ui <- fluidPage(
   tags$head(
     tags$style(HTML(app_css)),
     tags$style(HTML(carousel_css)),
+    tags$style(HTML(bridge_css)),
     tags$script(HTML(scroll_js)),
     tags$script(HTML(carousel_js))
   ),
@@ -578,12 +581,18 @@ ui <- fluidPage(
         "Nine charts on segment profit, growth, funding and asset quality. Use the arrows, the dots or the left and right keys to move between them."),
       eda_carousel_ui()
     )
+  ),
+
+  # ======================= SECTION 4: PROFIT BRIDGE =======================
+  div(class = "dash-section",
+    bridge_ui()
   )
 )
 
 # ---- Server ----
 server <- function(input, output, session) {
   eda_server(output)
+  bridge_server(output)
 }
 
 shinyApp(ui, server)
