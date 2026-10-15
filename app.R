@@ -9,7 +9,8 @@
 #   │   ├── eda.R            <- EDA charts + carousel
 #   │   ├── bridge.R         <- profit bridge
 #   │   ├── drivers_kpis.R   <- driver breakdown + 8 KPIs
-#   │   └── segment_matrix.R <- segment comparison heat map
+#   │   ├── segment_matrix.R <- segment comparison heat map
+#   │   └── conclusion.R     <- final conclusion
 #   └── Assets/
 #       ├── imgs/axis_logo.png
 #       └── Data/extracted_data/*.csv
@@ -35,6 +36,7 @@ source(file.path(app_dir, "modules", "eda.R"), local = TRUE, encoding = "UTF-8")
 source(file.path(app_dir, "modules", "bridge.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "drivers_kpis.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
 source(file.path(app_dir, "modules", "segment_matrix.R"), local = TRUE, encoding = "UTF-8")  # must come after eda.R
+source(file.path(app_dir, "modules", "conclusion.R"), local = TRUE, encoding = "UTF-8")  # must come after bridge, drivers_kpis, segment_matrix
 
 # ---- Axis Bank palette (edit here, applies everywhere) ----
 axis_colors <- list(
@@ -607,6 +609,11 @@ ui <- fluidPage(
   # ======================= SECTION 7: SEGMENT COMPARISON MATRIX =======================
   div(class = "dash-section",
     segment_matrix_ui()
+  ),
+
+  # ======================= SECTION 8: CONCLUSION =======================
+  div(class = "dash-section",
+    conclusion_ui()
   )
 )
 
