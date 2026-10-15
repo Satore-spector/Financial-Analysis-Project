@@ -1,0 +1,179 @@
+diff --git a/app.R b/app.R
+index a8f1208..3e6527d 100644
+--- a/app.R
++++ b/app.R
+@@ -477,6 +477,7 @@ ui <- fluidPage(
+     tags$script(HTML(replay_js)),
+     tags$style(HTML(dk_css)),
+     tags$style(HTML(sm_css)),
++    tags$script(HTML(sm_js)),
+     tags$script(HTML(scroll_js)),
+     tags$script(HTML(carousel_js))
+   ),
+diff --git a/modules/echarts_helpers.R b/modules/echarts_helpers.R
+index f0edee0..f4a359f 100644
+--- a/modules/echarts_helpers.R
++++ b/modules/echarts_helpers.R
+@@ -136,6 +136,7 @@ ec_waterfall <- function(vals, is_total, x_labels, tip_names, y_title,
+ #   series    list of list(name, color, values, labels)
+ #             values: numbers (NA = no bar); labels: text shown on / in the tooltip for each bar
+ #   stack     TRUE draws the series on top of each other (used for the funding chart)
++#   value_suffix  text added to the value-axis numbers (e.g. "%")
+ # Negative values get their label below the bar (left of it when horizontal).
+ # ---------------------------------------------------------
+ ec_wrap <- function(x, width = 16) {
+@@ -143,7 +144,7 @@ ec_wrap <- function(x, width = 16) {
+ }
+ 
+ ec_bar_chart <- function(x, series, y_title, horizontal = FALSE, stack = FALSE,
+-                         label_size = 19, wrap = 16, name_gap = NULL) {
++                         label_size = 19, wrap = 16, name_gap = NULL, value_suffix = "") {
+   multi <- length(series) > 1
+   all_vals <- unlist(lapply(series, function(s) s$values))
+   has_neg <- any(all_vals < 0, na.rm = TRUE)
+@@ -183,7 +184,8 @@ ec_bar_chart <- function(x, series, y_title, horizontal = FALSE, stack = FALSE,
+   val_axis <- list(type = "value",
+                    boundaryGap = if (has_neg) c("15%", "22%") else c(0, "22%"),
+                    axisLabel = list(fontSize = 16, color = pal$text,
+-                                    formatter = ec_js("function (v) { return v.toLocaleString('en-US'); }")),
++                                    formatter = ec_js(paste0("function (v) { return v.toLocaleString('en-US') + '",
++                                                             value_suffix, "'; }"))),
+                    splitLine = list(lineStyle = list(color = pal$grid)))
+   if (!has_neg) val_axis$min <- 0
+   if (horizontal) {
+diff --git a/modules/segment_matrix.R b/modules/segment_matrix.R
+index ad04a57..c7ef30e 100644
+--- a/modules/segment_matrix.R
++++ b/modules/segment_matrix.R
+@@ -95,13 +95,17 @@ sm_rank <- function(vals, better) {
+   as.integer(r)
+ }
+ 
+-sm_cell <- function(v, type, t, rk) {
+-  if (is.na(v)) return(tags$td(class = "mx-na", "n/a"))
+-  if (is.na(t)) return(tags$td(div(class = "mx-val", sm_fmt(v, type))))
++# d = animation delay in seconds (set per cell so the table fills in row by row)
++sm_delay <- function(d) sprintf("--d:%.2fs;", d)
++
++sm_cell <- function(v, type, t, rk, d = 0) {
++  if (is.na(v)) return(tags$td(class = "mx-cell mx-na", style = sm_delay(d), "n/a"))
++  if (is.na(t)) return(tags$td(class = "mx-cell", style = sm_delay(d),
++                               div(class = "mx-val", sm_fmt(v, type))))
+   rgbv <- round(sm_ramp(t))
+   bg <- sprintf("rgb(%d,%d,%d)", rgbv[1], rgbv[2], rgbv[3])
+   fg <- if (t >= 0.5) "#FFFFFF" else pal$text
+-  tags$td(style = paste0("background:", bg, ";color:", fg, ";"),
++  tags$td(class = "mx-cell", style = paste0("background:", bg, ";color:", fg, ";", sm_delay(d)),
+     div(class = "mx-val", sm_fmt(v, type)),
+     div(class = "mx-rank", paste0("#", rk))
+   )
+@@ -111,18 +115,21 @@ sm_dir <- function(better) switch(better,
+   higher = "\u25B2 higher", lower = "\u25BC lower", "\u2013")
+ 
+ sm_table_ui <- function() {
+-  body <- list(); last_group <- ""
++  body <- list(); last_group <- ""; row_i <- 0
+   for (r in sm_rows) {
++    row_i <- row_i + 1
++    row_d <- 0.15 + (row_i - 1) * 0.09     # each row starts a little after the one above
+     if (r$group != last_group) {
+       body[[length(body) + 1]] <- tags$tr(class = "mx-group",
+         tags$td(colspan = length(sm_segments) + 2, r$group))
+       last_group <- r$group
+     }
+     ts <- sm_scale(r$vals, r$better); rk <- sm_rank(r$vals, r$better)
+-    cells <- lapply(seq_along(sm_segments), function(i) sm_cell(r$vals[i], r$type, ts[i], rk[i]))
++    cells <- lapply(seq_along(sm_segments), function(i)
++      sm_cell(r$vals[i], r$type, ts[i], rk[i], d = row_d + 0.12 + (i - 1) * 0.07))
+     body[[length(body) + 1]] <- tags$tr(
+-      tags$td(class = "mx-metric", r$label),
+-      tags$td(class = "mx-dir", sm_dir(r$better)),
++      tags$td(class = "mx-cell mx-metric", style = sm_delay(row_d), r$label),
++      tags$td(class = "mx-cell mx-dir", style = sm_delay(row_d), sm_dir(r$better)),
+       cells
+     )
+   }
+@@ -157,6 +164,27 @@ plot_sm_margin <- function() {
+     theme_axis()
+ }
+ 
++# Animated version (echarts4r): same grouped bars, they grow in segment by segment.
++# Drawing code is shared in modules/echarts_helpers.R. The ggplot function above is
++# kept for reference but is no longer shown.
++plot_sm_margin_echarts <- function() {
++  per <- c("Q1 FY26", "Q4 FY26", "Q1 FY27")
++  d <- data.frame(
++    x     = rep(sm_heads, 3),
++    group = factor(rep(per, each = length(sm_segments)), levels = per),
++    value = c(sm_prv$segment_pbt_cr / sm_prv$segment_revenue_cr,
++              sm_qoq$segment_pbt_cr / sm_qoq$segment_revenue_cr,
++              sm_cur$segment_pbt_cr / sm_cur$segment_revenue_cr) * 100
++  )
++  ec_bar_chart(
++    x = sm_heads,
++    series = ec_from_long(d, setNames(c(pal$rose, pal$muted, pal$primary), per),
++                          function(v) sprintf("%.1f%%", v)),
++    y_title = "PBT margin (% of gross segment revenue)",
++    value_suffix = "%"
++  )
++}
++
+ # ---------------------------------------------------------
+ # Section content (three fading blocks)
+ # ---------------------------------------------------------
+@@ -219,7 +247,7 @@ segment_matrix_ui <- function() {
+         "Margin is segment profit before tax divided by gross segment revenue. Retail's margin has improved sharply, while Treasury's is volatile."),
+       div(class = "slide-card",
+         h3(class = "slide-title", "PBT margin by segment: Q1 FY26, Q4 FY26 and Q1 FY27"),
+-        plotOutput("sm_margin_plot", height = "50vh")
++        div(class = "replay-chart", echarts4rOutput("sm_margin_plot", height = "50vh"))
+       )
+     )
+   )
+@@ -276,9 +304,45 @@ sm_css <- "
+   background: linear-gradient(to right, #F3E7EC, #97144D);
+ }
+ .mx-legend-note { opacity: 0.75; margin-left: 8px; }
++
++/* ---- Table animation ----
++   sm_js (below) adds .mx-ready on load (cells start hidden) and toggles .mx-play
++   while the table is on screen, so the heat map fills in row by row each time it
++   scrolls into view. Without JS the table simply shows. Each cell's start delay
++   comes from its --d variable (set in sm_cell). */
++.mx-wrap.mx-ready .mx-table td.mx-cell { opacity: 0; }
++.mx-wrap.mx-play .mx-table td.mx-cell {
++  animation: mxIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
++  animation-delay: var(--d, 0s);
++}
++@keyframes mxIn {
++  from { opacity: 0; transform: scale(0.8); background-color: #FFFFFF; }
++  to   { opacity: 1; transform: scale(1); }
++}
++@media (prefers-reduced-motion: reduce) {
++  .mx-wrap.mx-ready .mx-table td.mx-cell { opacity: 1; }
++  .mx-wrap.mx-play .mx-table td.mx-cell { animation: none; }
++}
++"
++
++# ---- Replays the table animation each time it scrolls into view (same idea as replay_js).
++sm_js <- "
++document.addEventListener('DOMContentLoaded', function () {
++  var wraps = document.querySelectorAll('.mx-wrap');
++  if (!wraps.length || !('IntersectionObserver' in window)) return;   // no support: table stays visible
++  var steps = []; for (var i = 0; i <= 20; i++) steps.push(i / 20);
++  var io = new IntersectionObserver(function (entries) {
++    entries.forEach(function (e) {
++      var tall = e.rootBounds && e.intersectionRect.height >= e.rootBounds.height * 0.4;
++      if (e.isIntersecting && (e.intersectionRatio >= 0.2 || tall)) e.target.classList.add('mx-play');
++      else if (e.intersectionRatio === 0) e.target.classList.remove('mx-play');   // reset once fully off screen
++    });
++  }, { threshold: steps });
++  wraps.forEach(function (w) { w.classList.add('mx-ready'); io.observe(w); });
++});
+ "
+ 
+ # ---- Server hook: call segment_matrix_server(output) inside server() ----
+ segment_matrix_server <- function(output) {
+-  output$sm_margin_plot <- renderPlot(plot_sm_margin(), res = 96, bg = "white")
++  output$sm_margin_plot <- renderEcharts4r(plot_sm_margin_echarts())
+ }

@@ -136,6 +136,7 @@ ec_waterfall <- function(vals, is_total, x_labels, tip_names, y_title,
 #   series    list of list(name, color, values, labels)
 #             values: numbers (NA = no bar); labels: text shown on / in the tooltip for each bar
 #   stack     TRUE draws the series on top of each other (used for the funding chart)
+#   value_suffix  text added to the value-axis numbers (e.g. "%")
 # Negative values get their label below the bar (left of it when horizontal).
 # ---------------------------------------------------------
 ec_wrap <- function(x, width = 16) {
@@ -143,7 +144,7 @@ ec_wrap <- function(x, width = 16) {
 }
 
 ec_bar_chart <- function(x, series, y_title, horizontal = FALSE, stack = FALSE,
-                         label_size = 19, wrap = 16, name_gap = NULL) {
+                         label_size = 19, wrap = 16, name_gap = NULL, value_suffix = "") {
   multi <- length(series) > 1
   all_vals <- unlist(lapply(series, function(s) s$values))
   has_neg <- any(all_vals < 0, na.rm = TRUE)
@@ -183,7 +184,8 @@ ec_bar_chart <- function(x, series, y_title, horizontal = FALSE, stack = FALSE,
   val_axis <- list(type = "value",
                    boundaryGap = if (has_neg) c("15%", "22%") else c(0, "22%"),
                    axisLabel = list(fontSize = 16, color = pal$text,
-                                    formatter = ec_js("function (v) { return v.toLocaleString('en-US'); }")),
+                                    formatter = ec_js(paste0("function (v) { return v.toLocaleString('en-US') + '",
+                                                             value_suffix, "'; }"))),
                    splitLine = list(lineStyle = list(color = pal$grid)))
   if (!has_neg) val_axis$min <- 0
   if (horizontal) {

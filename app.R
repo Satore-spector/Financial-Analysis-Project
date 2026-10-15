@@ -89,10 +89,10 @@ html, body {
 
 .hero-logo {
   display: block;
-  max-width: 260px;
+  max-width: 480px;   /* was 260px; the source image is 860px wide, so this stays sharp */
   width: 100%%;
   height: auto;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 56px auto;
 }
 
 .hero-title {
@@ -477,6 +477,7 @@ ui <- fluidPage(
     tags$script(HTML(replay_js)),
     tags$style(HTML(dk_css)),
     tags$style(HTML(sm_css)),
+    tags$script(HTML(sm_js)),
     tags$script(HTML(scroll_js)),
     tags$script(HTML(carousel_js))
   ),
